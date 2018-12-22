@@ -1,4 +1,6 @@
 import csv
+import json
+
 COLUMNS = ['open', 'high', 'low', 'close']
 
 def read_csv(filename):
@@ -6,6 +8,10 @@ def read_csv(filename):
 	with open(filename, 'rb') as f:
 		reader = csv.reader(f)
 		return list(reader)
+
+def convert_utc_to_date(utcTime):
+	# This is currently not working properly
+	return utcTime
 
 class Algo(object):
 	"""docstring for Algo"""
@@ -17,6 +23,12 @@ class Algo(object):
 		self.read_dataset()
 		# Fills the dataset with info from the CSV
 		#print self.dataset
+		self.forumnData = {}
+		# This contains the forumn dataset
+		#self.read_forumn_data()
+		# Reads the dataset
+
+
 
 	def read_dataset(self, filename="vixcurrent.csv"):
 		csvFile = read_csv(filename)
@@ -35,6 +47,19 @@ class Algo(object):
 				# Iterates over each column
 				self.dataset[day][columnVal] = float(row[i+1])
 				# Assigns each value to the info dict
+
+	def read_forumn_data(self, filename="/media/christopher/ssd/wsbData.json"):
+		# This is the data from wallstreet bets
+		# It populates the forumnData
+		with open(filename) as f:
+			for i, line in enumerate(f):
+				val = json.loads(line)
+				dayVal = convert_utc_to_date(val['created_utc'])
+				if dayVal not in self.forumnData:
+					self.forumnData[dayVal] = []
+				self.forumnData[dayVal].append(val)
+				if i % 2000 == 0:
+					print i
 
 	def calc_diff_from_date(self, date, days):
 		# Calculates the difference in values from a specified day onward
@@ -83,10 +108,14 @@ class Algo(object):
 			 returnVal[val] = functionVal(val)
 		return returnVal
 
+	#def calc_forumn_frequency(self):
+
+
 
 
 
 if __name__ == '__main__':
 	a = Algo()
 	#print a.calc_diff_from_date('1/5/2004', 7)
-	a.calc_for_all(a.calculate_day_diff)
+	#a.calc_for_all(a.calculate_day_diff)
+	print len(a.forumnData)
