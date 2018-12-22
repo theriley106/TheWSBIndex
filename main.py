@@ -27,6 +27,8 @@ class Algo(object):
 			# This gets the current dataset
 			day = row[0]
 			# This is the day value
+			self.days.append(day)
+			# Adds the day to the list of days
 			self.dataset[day] = {}
 			# This contains the information from each column
 			for i, columnVal in enumerate(COLUMNS):
