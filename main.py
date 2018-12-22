@@ -33,10 +33,36 @@ class Algo(object):
 			# This contains the information from each column
 			for i, columnVal in enumerate(COLUMNS):
 				# Iterates over each column
-				self.dataset[day][columnVal] = row[i+1]
+				self.dataset[day][columnVal] = float(row[i+1])
 				# Assigns each value to the info dict
+
+	#def calc_diff(self)
+
+	def calc_avg_from_date(self, date, days):
+		# Calculates the average values from a specified day onward
+		# Ie: date=1/29/2004, days=7
+		dayIndex = self.days.index(date)
+		# This is the index of the inputted day
+		info = {}
+		for column in COLUMNS:
+			# Goes over each column in the dataset
+			info[column] = []
+		print dayIndex
+		for i in range(dayIndex, dayIndex+days):
+			# Goes through each column in the dataset
+			dayInfo = self.dataset[self.days[i]]
+			# This is all the info for the current day
+			for column in COLUMNS:
+				# Goes over each column in the dataset
+				info[column].append(dayInfo[column])
+		for column in COLUMNS:
+			# Goes through each column in the dataset
+			info[column] = (sum(info[column]) / len(info[column]))
+		return info
+
 
 
 
 if __name__ == '__main__':
 	a = Algo()
+	print a.calc_avg_from_date('1/5/2004', 7)
