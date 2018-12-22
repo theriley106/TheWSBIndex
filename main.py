@@ -71,6 +71,9 @@ class Algo(object):
 			info[column] = (sum(info[column]) / len(info[column]))
 		return info
 
+	def calculate_day_diff(self, date):
+		# This calculates the daily change
+		return self.dataset[date]['close'] - self.dataset[date]['open']
 
 
 
