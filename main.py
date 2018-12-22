@@ -16,7 +16,7 @@ class Algo(object):
 		# These are the values of the dataset
 		self.read_dataset()
 		# Fills the dataset with info from the CSV
-		print self.dataset
+		#print self.dataset
 
 	def read_dataset(self, filename="vixcurrent.csv"):
 		csvFile = read_csv(filename)
@@ -58,7 +58,7 @@ class Algo(object):
 		for column in COLUMNS:
 			# Goes over each column in the dataset
 			info[column] = []
-		print dayIndex
+		#print dayIndex
 		for i in range(dayIndex, dayIndex+days):
 			# Goes through each column in the dataset
 			dayInfo = self.dataset[self.days[i]]
@@ -76,8 +76,12 @@ class Algo(object):
 		return (self.dataset[date]['close'] - self.dataset[date]['open'])
 
 	def calc_for_all(self, functionVal):
+		# This will run each day through a specific function
+		returnVal = {}
 		for val in self.days:
-			print functionVal(val)
+			# Iterates over each day
+			 returnVal[val] = functionVal(val)
+		return returnVal
 
 
 
