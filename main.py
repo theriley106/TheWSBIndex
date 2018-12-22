@@ -73,10 +73,16 @@ class Algo(object):
 
 	def calculate_day_diff(self, date):
 		# This calculates the daily change
-		return self.dataset[date]['close'] - self.dataset[date]['open']
+		return (self.dataset[date]['close'] - self.dataset[date]['open'])
+
+	def calc_for_all(self, functionVal):
+		for val in self.days:
+			print functionVal(val)
+
 
 
 
 if __name__ == '__main__':
 	a = Algo()
-	print a.calc_diff_from_date('1/5/2004', 7)
+	#print a.calc_diff_from_date('1/5/2004', 7)
+	a.calc_for_all(a.calculate_day_diff)
