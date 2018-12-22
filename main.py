@@ -36,7 +36,18 @@ class Algo(object):
 				self.dataset[day][columnVal] = float(row[i+1])
 				# Assigns each value to the info dict
 
-	#def calc_diff(self)
+	def calc_diff_from_date(self, date, days):
+		# Calculates the difference in values from a specified day onward
+		# Ie: date=1/29/2004, days=7
+		dayIndex = self.days.index(date)
+		# This is the index of the inputted day
+		info = {}
+		for column in COLUMNS:
+			# Goes over each column in the dataset
+			currentVal = self.dataset[date][column]
+			futureVal = self.dataset[self.days[dayIndex+days]][column]
+			info[column] = currentVal - futureVal
+		return info
 
 	def calc_avg_from_date(self, date, days):
 		# Calculates the average values from a specified day onward
@@ -65,4 +76,4 @@ class Algo(object):
 
 if __name__ == '__main__':
 	a = Algo()
-	print a.calc_avg_from_date('1/5/2004', 7)
+	print a.calc_diff_from_date('1/5/2004', 7)
