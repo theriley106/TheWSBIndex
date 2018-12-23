@@ -3,6 +3,8 @@
 import re
 import json
 import csv
+import threading
+import os
 
 def get_all_possible_tickers(fileName="companylist.csv"):
 	with open(fileName, 'rb') as f:
@@ -26,14 +28,13 @@ def read_forumn_data(filename="/media/christopher/ssd/wsbData.json"):
 	count = {}
 	with open(filename) as f:
 		for i, line in enumerate(f):
+			if i % 200000 == 0:
+				fileName = "{}.json".format(i)
+				print fileName
 			val = json.loads(line)
 			if val['body'] != '[deleted]':
-				for val in extract_tickers(val['body']):
-					if val not in count:
-						count[val] = 0
-					count[val] += 1
-			if i % 20000 == 0 and i != 0:
-				break
+				val['tickers'] = extract_tickers(val['body'])
+				append_json_to_file(val, fileName)
 	for key, value in count.iteritems():
 		print("{} - {}".format(key, value))
 
@@ -43,7 +44,7 @@ def append_json_to_file(dataVal, fileName):
 	else:
 		writeVal = 'a'
 	with open(fileName, writeVal) as myfile:
-    	myfile.write(json.dumps(dataVal))
+		myfile.write(json.dumps(dataVal))
 
 
 if __name__ == '__main__':
