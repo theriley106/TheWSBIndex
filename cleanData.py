@@ -37,6 +37,14 @@ def read_forumn_data(filename="/media/christopher/ssd/wsbData.json"):
 	for key, value in count.iteritems():
 		print("{} - {}".format(key, value))
 
+def append_json_to_file(dataVal, fileName):
+	if os.path.exists(fileName) == False:
+		writeVal = 'w'
+	else:
+		writeVal = 'a'
+	with open(fileName, writeVal) as myfile:
+    	myfile.write(json.dumps(dataVal))
+
 
 if __name__ == '__main__':
 	#messageVal = '''AMD up AH is not very cash money'''
