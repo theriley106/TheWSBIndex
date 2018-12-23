@@ -34,9 +34,14 @@ def read_forumn_data(filename="/media/christopher/ssd/wsbData.json"):
 			val = json.loads(line)
 			if val['body'] != '[deleted]':
 				val['tickers'] = extract_tickers(val['body'])
+				for val in val['tickers']:
+					if val not in count:
+						count[val] = 0
+					count[val] += 1
 				append_json_to_file(val, fileName)
 	for key, value in count.iteritems():
 		print("{} - {}".format(key, value))
+	append_json_to_file(count, 'AllCounts.json')
 
 def append_json_to_file(dataVal, fileName):
 	if os.path.exists(fileName) == False:
