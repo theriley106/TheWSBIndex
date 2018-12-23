@@ -37,9 +37,3 @@ def read_forumn_data(filename="/media/christopher/ssd/wsbData.json"):
 	for key, value in count.iteritems():
 		print("{} - {}".format(key, value))
 
-
-if __name__ == '__main__':
-	#messageVal = '''AMD up AH is not very cash money'''
-	#print extract_tickers(messageVal)
-	#read_forumn_data()
-	pass
