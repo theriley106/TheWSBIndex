@@ -44,7 +44,7 @@ def append_json_to_file(dataVal, fileName):
 	else:
 		writeVal = 'a'
 	with open(fileName, writeVal) as myfile:
-		myfile.write(json.dumps(dataVal))
+		myfile.write(json.dumps(dataVal) + "\n")
 
 
 if __name__ == '__main__':
