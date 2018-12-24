@@ -25,7 +25,7 @@ new Chart(document.getElementById("bar-chart-grouped"), {
       labels: [{% for info in DATABASE %}"{{ info.Ticker }}",{% endfor %}],
       datasets: [
         {
-          label: "# of Mentions in /r/ApplyToCollege",
+          label: "# of Mentions in /r/WallStreetBets",
           backgroundColor: "#3e95cd",
           data: [{% for info in DATABASE %}"{{ info.Mentions }}",{% endfor %}]
         }
