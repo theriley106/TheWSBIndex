@@ -2,7 +2,7 @@
 
 ## Data Visualizations
 
-### Top-50 Stock Tickers by Total Mentions
+### Top-20 Stock Tickers by Total Mentions
 
 <p align="center">
 <img src ="static/totalMentions.png">
