@@ -1,7 +1,10 @@
 import csv
 import json
+import re
+import dateparser as dp
 
 COLUMNS = ['open', 'high', 'low', 'close']
+STOCK_TICKERS = get_all_possible_tickers()
 
 def read_csv(filename):
 	# Reads the dataset with historical prices
@@ -9,9 +12,14 @@ def read_csv(filename):
 		reader = csv.reader(f)
 		return list(reader)
 
-def convert_utc_to_date(utcTime):
-	# This is currently not working properly
-	return utcTime
+def convert_date(dateVal):
+	# Converts to format 2004-01-05
+	dt = dp.parse(dateVal)
+	return dt.date()
+
+def extract_tickers(string):
+	e = re.findall('[A-Z]{1,4}|\d{1,3}(?=\.)|\d{4,}', string)
+	return list(set(e).intersection(set(STOCK_TICKERS)))
 
 class Algo(object):
 	"""docstring for Algo"""
@@ -54,7 +62,7 @@ class Algo(object):
 		with open(filename) as f:
 			for i, line in enumerate(f):
 				val = json.loads(line)
-				dayVal = convert_utc_to_date(val['created_utc'])
+				dayVal = convert_date(val['created_utc'])
 				if dayVal not in self.forumnData:
 					self.forumnData[dayVal] = []
 				self.forumnData[dayVal].append(val)
