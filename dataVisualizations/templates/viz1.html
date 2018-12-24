@@ -1,0 +1,78 @@
+
+<!doctype html>
+<html>
+
+<head>
+    <title>Stock Tickers by Total Mentions</title>
+    <script src="{{ url_for('static',filename='js/Chart.bundle.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/utils.js') }}"></script>
+    <style>
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="bar-chart-grouped" width="700" height="350"></canvas>
+    <script>
+
+new Chart(document.getElementById("bar-chart-grouped"), {
+    type: 'bar',
+    data: {
+      labels: [{% for info in DATABASE %}"{{ info.Ticker }}",{% endfor %}],
+      datasets: [
+        {
+          label: "# of Mentions in /r/ApplyToCollege",
+          backgroundColor: "#3e95cd",
+          data: [{% for info in DATABASE %}"{{ info.Mentions }}",{% endfor %}]
+        }
+      ]
+    },
+
+    options: {
+      scales: {
+    xAxes: [{
+        stacked: false,
+        beginAtZero: true,
+        scaleLabel: {
+            labelString: 'Mentions'
+        },
+        ticks: {
+            stepSize: 1,
+            min: 0,
+            autoSkip: false
+        }
+    }],
+    yAxes: [
+        {
+            id: 'y-axis-1',
+            display: true,
+            position: 'left',
+            ticks: {
+                callback: function(value, index, values) {
+                    return value;
+                }
+            },
+            scaleLabel:{
+                display: true,
+                labelString: '# of comments mentioning ticker',
+                fontColor: "#546372"
+            }
+        }
+      ]
+      },
+
+      title: {
+        display: true,
+        text: 'Stock Tickers by Total Mentions'
+      }
+    }
+});
+
+</script>
+</body>
+
+</html>
