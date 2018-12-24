@@ -1,6 +1,10 @@
 # The WSB Index
 ### An algorithmic trading strategy to predict market volatility from /r/WallStreetBets comments
 
+<p align="center">
+<img src ="static/wsbLogo.png">
+</p>
+
 ## Data Visualizations
 
 ### Top-20 Stock Tickers by Total Mentions
