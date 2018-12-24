@@ -5,7 +5,7 @@
 ### Top-20 Stock Tickers by Total Mentions
 
 <p align="center">
-<img src ="static/totalMentions.png">
+<img src ="static/newTotalMentions.png">
 </p>
 
 ### Stock Tickers Mentions by Day
