@@ -4,6 +4,15 @@ import re
 import dateparser as dp
 
 COLUMNS = ['open', 'high', 'low', 'close']
+IS_TICKER = re.compile("[A-Z]{1,4}|\d{1,3}(?=\.)|\d{4,}")
+# This is a regex that determines if a string is a stock ticker
+
+def get_all_possible_tickers(fileName="companylist.csv"):
+	with open(fileName, 'rb') as f:
+		reader = csv.reader(f)
+		your_list = list(reader)
+	return [x[0] for x in your_list[1:]]
+
 STOCK_TICKERS = get_all_possible_tickers()
 
 def read_csv(filename):
@@ -20,6 +29,35 @@ def convert_date(dateVal):
 def extract_tickers(string):
 	e = re.findall('[A-Z]{1,4}|\d{1,3}(?=\.)|\d{4,}', string)
 	return list(set(e).intersection(set(STOCK_TICKERS)))
+
+def isTicker(stringVal):
+	if IS_TICKER.match(stringVal):
+		return stringVal in set(STOCK_TICKERS)
+	return False
+
+def extract_buy_or_sell(string):
+	# Extracts the words buy or sell from the comment
+	for val in re.split("(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s", string):
+		# This splits the string into sentences
+		tradeType = "buy"
+		allWords = re.findall("\w+", str(val))
+		while len(allWords) > 0:
+			word = allWords.pop(0)
+			if re.match("[\W]?([Bb]uy)[\W]?", word):
+				# This means it's the word buy
+				pass
+			elif re.match("[\W]?([Ss]ell)[\W]?", word):
+				# This means it's the word sell
+				pass
+
+		#e =
+		#[Ss]ell
+	if len(e) > 1:
+		# This means it was a relatively complex sentence.
+		for val in re.split("(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s", string):
+			print val
+	#e = re.findall('[A-Z]{1,4}|\d{1,3}(?=\.)|\d{4,}', string)
+	#return list(set(e).intersection(set(STOCK_TICKERS)))
 
 class Algo(object):
 	"""docstring for Algo"""
@@ -123,7 +161,13 @@ class Algo(object):
 
 
 if __name__ == '__main__':
-	a = Algo()
+	#a = Algo()
 	#print a.calc_diff_from_date('1/5/2004', 7)
 	#a.calc_for_all(a.calculate_day_diff)
-	print len(a.forumnData)
+	#print len(a.forumnData)
+	#message = """you should buy TSLA.  Maybe even buy AMD if you feel like it."""
+	#e = re.compile("[\W]?([Bb]uy|[Ss]ell)[\W]?")
+	#if e.match('bestbuy'):
+	#	print("Found")
+	#extract_buy_or_sell(message)
+	print isTicker("BARH")
