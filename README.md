@@ -1,4 +1,5 @@
-# VIXAlgoTrading
+# The WSB Index
+## An algorithmic trading strategy to predict market volatility from /r/WallStreetBets comments
 
 ## Data Visualizations
 
