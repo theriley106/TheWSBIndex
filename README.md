@@ -2,7 +2,7 @@
 ### An algorithmic trading strategy to predict market volatility from /r/WallStreetBets comments
 
 <p align="center">
-<img src ="static/wsbLogo.png">
+<img src ="static/wsbLogo.png" style="width: 50%;">
 </p>
 
 ## Data Visualizations
