@@ -151,6 +151,9 @@ def random_string(stringVal):
 	# Should return float or int
 	return float(stringVal)
 
+def calc_words(stringVal):
+	return stringVal.count(" ")
+
 class MultiThread(object):
 	def __init__(self, listOfObjects, function, threads=20):
 		self.lock = threading.Lock()
@@ -331,8 +334,12 @@ if __name__ == '__main__':
 	#listOfObjects = range(1,100)
 	#objectVal = [{'id': x, 'val': e} for x, e in enumerate(listOfObjects)]
 	#print objectVal
-
-	a = MultiThread([str(i) for i in range(0,101)], random_string)
-	b = a.run_all()
+	c = open("comments.txt").read().split("\n")
+	a = MultiThread(c, calc_words)
+	g = a.run_all()
+	print g
 	print a.get_diff_from_average()
+	#a = MultiThread([str(i) for i in range(0,101)], random_string)
+	#b = a.run_all()
+	#print a.get_diff_from_average()
 	#print b
