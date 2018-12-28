@@ -4,6 +4,7 @@ import re
 import dateparser as dp
 import threading
 import random
+import time
 
 COLUMNS = ['open', 'high', 'low', 'close']
 IS_TICKER = re.compile("[A-Z]{1,4}|\d{1,3}(?=\.)|\d{4,}")
@@ -155,7 +156,7 @@ def calc_words(stringVal):
 	return stringVal.count(" ")
 
 class MultiThread(object):
-	def __init__(self, listOfObjects, function, threads=20):
+	def __init__(self, listOfObjects, function, threads=1):
 		self.lock = threading.Lock()
 		self.threads = threads
 		self.totalLength = len(listOfObjects)
@@ -165,6 +166,7 @@ class MultiThread(object):
 		self.totalRuns = 0
 		self.totalCount = 0
 		self.results = {}
+		self.totalTime = 0
 
 	def run_single(self):
 		while len(self.objects) > 0:
@@ -183,11 +185,14 @@ class MultiThread(object):
 			self.toReturn = []
 
 	def run_all(self):
+		start = time.time()
 		threads = [threading.Thread(target=self.run_single) for i in range(self.threads)]
 		for thread in threads:
 			thread.start()
 		for thread in threads:
 			thread.join()
+		end = time.time()
+		self.totalTime = end-start
 		self.average = (float(self.totalCount) / float(self.totalRuns))
 		self.toReturn = [self.results[str(i)] for i in range(self.totalLength)]
 		return self.toReturn
@@ -339,6 +344,7 @@ if __name__ == '__main__':
 	g = a.run_all()
 	print g
 	print a.get_diff_from_average()
+	print a.totalTime
 	#a = MultiThread([str(i) for i in range(0,101)], random_string)
 	#b = a.run_all()
 	#print a.get_diff_from_average()
