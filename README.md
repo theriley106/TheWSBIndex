@@ -171,3 +171,8 @@
     }
 
 ]```
+
+
+## Outline
+
+Text -> Function -> Returns Value -> Keep track of average value -> (return value - average value) compared to (change in stock price, volatility of stock price, volumen change, spread, etc.)
