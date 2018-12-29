@@ -5,6 +5,8 @@
 <h3 align="center">An algorithmic trading strategy to predict market volatility from /r/WallStreetBets comments</h3>
 </p>
 
+## Analysis
+
 ## Data Visualizations
 
 ### Top-20 Stock Tickers by Total Mentions
