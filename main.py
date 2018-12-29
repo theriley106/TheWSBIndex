@@ -37,6 +37,15 @@ def get_sentiment_by_ticker(tickerVal):
 		return 0
 	return float(totalVal) / float(totalCount)
 
+def get_yolo_comments():
+	# This returns tickers that are used in "YOLO" comments
+	sql_command = """SELECT tickers FROM comments WHERE body LIKE '%yolo%' AND tickers not NULL;"""
+
+	tickers = []
+	for val in db.run_command(sql_command):
+		tickers += [x.upper() for x in val[0].split(",") if len(x) > 0]
+	return tickers
+
 
 
 STOCK_TICKERS = get_all_possible_tickers()
