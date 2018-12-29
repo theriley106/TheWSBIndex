@@ -31,6 +31,14 @@ def get_company_by_ticker(tickerVal):
 		if x[0] == tickerVal:
 			return x[1]
 
+def get_all_info_by_ticker(tickerVal):
+	with open(COMPANY_LIST, 'rb') as f:
+		reader = csv.reader(f)
+		your_list = list(reader)
+	for x in your_list[1:]:
+		if x[0] == tickerVal:
+			return x
+
 def get_sentiment_by_ticker(tickerVal):
 	# This is super hacky because the tickers are stored as a string like F,TSLA,ETC.
 	sql_command = """SELECT polarity, tickers FROM comments WHERE tickers LIKE '%{}%';""".format(tickerVal)
