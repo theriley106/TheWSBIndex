@@ -17,11 +17,91 @@
 
 ### Stock Ticker Mentions by Average Vote Count
 
-### Language Processing
+## Language Processing
 
+### Overview
 
-#### Examples:
+WallStreetBets is a discussion forum about day trading, stocks, options, futures, and anything market related, so it would be innacurate to assume that any comment containing a stock ticker indicated a long position on the security.
 
+From my understanding this is an NLP problem that's relatively difficult to solve.  A *slighly* more accurate way of extracting the type of position from a comment would be to assume a long position unless the word "short" is present in the comment.
+
+Unfortunately, this strategy would fail in comments discussing options, and in our model the purchase of a put option would imply the same sentiment as a short position.
+
+Lastly, the discussion of multiple securities in a single comment can cause confusion as to the implied position relative to each stock ticker.
+
+### Proposed Solution
+
+Rather than using NLTK or RAKE, I created an algorithm present in *main.extract_buy_or_sell()* that attempts to extract the indicated position towards each stock ticker in a comment.  Here is the algorithm in Psuedocode:
+
+```
+comment_info = {'puts': [], 'calls': [], 'buy': [], 'sell': []}
+for sentence in comment:
+    while sentence:
+        word = sentence.pop()
+        if word == 'buy' or 'buying':
+            tempList = []
+            while sentence:
+                newWord = sentence.pop()
+                if newWord is StockTicker:
+                    tempList.append(newWord)
+                elif newWord == 'puts' and len(tempList) > 0:
+                    comment_info['puts'] += tempList
+                    tempList.clear()
+                    break
+                elif newWord == 'calls' and len(tempList) > 0:
+                    comment_info['calls'] += tempList
+                    tempList.clear()
+                    break
+            comment_info['buy'] += tempList
+        elif word == 'short' or 'shorting':
+            while sentence:
+                newWord = sentence.pop()
+                if newWord is StockTicker:
+                    comment_info['sell'] += newWord
+                else:
+                    break
+        elif word == 'sell' or 'sold' or 'close' or 'closing' or 'shorts':
+            tempList = []
+            while sentence:
+                newWord = sentence.pop()
+                if newWord is StockTicker:
+                    tempList.append(newWord)
+               elif newWord == 'puts' and len(tempList) > 0:
+                    comment_info['puts'] += tempList
+                    tempList.clear()
+                    break
+                elif newWord == 'calls' and len(tempList) > 0:
+                    comment_info['calls'] += tempList
+                    tempList.clear()
+                    break
+                elif newWord == 'shorts' and len(tempList) > 0:
+                    comment_info['buy'] += tempList
+                    tempList.clear()
+                    break
+            comment_info['sell'] += tempList
+        elif word is StockTicker:
+            tempList = [word]
+            while sentence:
+                newWord = sentence.pop()
+                if newWord is StockTicker:
+                    tempList.append(newWord)
+                elif newWord == 'puts' and len(tempList) > 0:
+                    comment_info['puts'] += tempList
+                    tempList.clear()
+                    break
+                elif newWord == 'calls' and len(tempList) > 0:
+                    comment_info['calls'] += tempList
+                    tempList.clear()
+                    break
+            comment_info['buy'] += tempList
+```
+
+### Examples:
+
+##### Note: This algo is only being used for stocks traded on the Nasdaq, hence certain *valid* stock tickers are considered *invalid* as we are not actively pursing information on them.
+
+#
+#
 ```javascript
 [
     {
