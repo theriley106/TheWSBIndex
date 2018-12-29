@@ -101,8 +101,7 @@ for sentence in comment:
 ##### Note: This algo is only being used for stocks traded on the Nasdaq, hence certain *valid* stock tickers are considered *invalid* as we are not actively pursing information on them.
 
 > "Short GPRO"
-
-{"sell": ["GPRO"], "buy": [], "calls": [], "puts": []}
+> {"sell": ["GPRO"], "buy": [], "calls": [], "puts": []}
 
 
 #
