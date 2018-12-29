@@ -7,9 +7,6 @@ def run_command(sqlCommand):
 	rows = cur.fetchall()
 	return rows
 
-
-
-
 if __name__ == '__main__':
 	result = run_command("""SELECT * FROM comments WHERE (body != "[deleted]")""")
 	print len(result)
