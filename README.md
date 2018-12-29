@@ -102,7 +102,7 @@ for sentence in comment:
 
 **"Short GPRO"**
 
-> {"sell": ["GPRO"], "buy": [], "calls": [], "puts": []}
+> **{"sell": ["GPRO"], "buy": [], "calls": [], "puts": []}**
 
 
 #
