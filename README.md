@@ -104,158 +104,54 @@ for sentence in comment:
 
 > **{"sell": ["GPRO"], "buy": [], "calls": [], "puts": []}**
 
+**"HIMX, EOG, WPRT, VALE. Some high div paying stocks NLY, PMT, HTS."**
 
-#
-#
-```javascript
-[
-    {
-        "comment": "Short GPRO",
-        "values": {
-            "sell": [
-                "GPRO"
-            ],
-            "buy": [],
-            "puts": [],
-            "calls": []
-        }
-    },
-    {
-        "comment": "HIMX, EOG, WPRT, VALE. Some high div paying stocks NLY, PMT, HTS.",
-        "values": {
-            "sell": [],
-            "buy": [
-                "HIMX",
-                "WPRT"
-            ],
-            "puts": [],
-            "calls": []
-        }
-    },
-    {
-        "comment": "AAMRQ and ONCS did great for me (and EPZM yesterday)",
-        "values": {
-            "sell": [],
-            "buy": [
-                "ONCS",
-                "EPZM"
-            ],
-            "puts": [],
-            "calls": []
-        }
-    },
-    {
-        "comment": "holding ZGNX now. Thanks man!",
-        "values": {
-            "sell": [],
-            "buy": [
-                "ZGNX"
-            ],
-            "puts": [],
-            "calls": []
-        }
-    },
-    {
-        "comment": "I threw a couple of hundreds on VVUS earnings. It both beat and is up! Yay!",
-        "values": {
-            "sell": [],
-            "buy": [
-                "VVUS"
-            ],
-            "puts": [],
-            "calls": []
-        }
-    },
-    {
-        "comment": "No. OP is hyping his GPRO bet.",
-        "values": {
-            "sell": [],
-            "buy": [
-                "GPRO"
-            ],
-            "puts": [],
-            "calls": []
-        }
-    },
-    {
-        "comment": "I closed my SRPT position today as well.  258% gain.",
-        "values": {
-            "sell": [
-                "SRPT"
-            ],
-            "buy": [],
-            "puts": [],
-            "calls": []
-        }
-    },
-    {
-        "comment": "I think SFM has much better growth opportunty",
-        "values": {
-            "sell": [],
-            "buy": [
-                "SFM"
-            ],
-            "puts": [],
-            "calls": []
-        }
-    },
-    {
-        "comment": "Though he's doing great in AAPL.",
-        "values": {
-            "sell": [],
-            "buy": [
-                "AAPL"
-            ],
-            "puts": [],
-            "calls": []
-        }
-    },
-    {
-        "comment": "I have some money to spare after my 300% gain on TSLA puts.",
-        "values": {
-            "sell": [],
-            "buy": [],
-            "puts": [
-                "TSLA"
-            ],
-            "calls": []
-        }
-    },
-    {
-        "comment": "Disclaimer, I am short Aug 100 covered calls. I am also long AAPL (though that's implied).",
-        "values": {
-            "sell": [],
-            "buy": [
-                "AAPL"
-            ],
-            "puts": [],
-            "calls": []
-        }
-    },
-    {
-        "comment": "looks like CSIQ is about to turn around tmr....",
-        "values": {
-            "sell": [],
-            "buy": [
-                "CSIQ"
-            ],
-            "puts": [],
-            "calls": []
-        }
-    },
-    {
-        "comment": "GPRO October $60 Puts",
-        "values": {
-            "sell": [],
-            "buy": [],
-            "puts": [
-                "GPRO"
-            ],
-            "calls": []
-        }
-    }
+> **{"sell": [], "buy": ["HIMX", "WPRT"], "calls": [], "puts": []}**
 
-]```
+**"AAMRQ and ONCS did great for me (and EPZM yesterday)"**
+
+> **{"sell": [], "buy": ["ONCS", "EPZM"], "calls": [], "puts": []}**
+
+**"holding ZGNX now. Thanks man!"**
+
+> **{"sell": [], "buy": ["ZGNX"], "calls": [], "puts": []}**
+
+**"I threw a couple of hundreds on VVUS earnings. It both beat and is up! Yay!"**
+
+> **{"sell": [], "buy": ["VVUS"], "calls": [], "puts": []}**
+
+**"No. OP is hyping his GPRO bet."**
+
+> **{"sell": [], "buy": ["GPRO"], "calls": [], "puts": []}**
+
+**"I closed my SRPT position today as well.  258% gain."**
+
+> **{"sell": ["SRPT"], "buy": [], "calls": [], "puts": []}**
+
+**"I think SFM has much better growth opportunty"**
+
+> **{"sell": [], "buy": ["SFM"], "calls": [], "puts": []}**
+
+**"Though he's doing great in AAPL."**
+
+> **{"sell": [], "buy": ["AAPL"], "calls": [], "puts": []}**
+
+**"I have some money to spare after my 300% gain on TSLA puts."**
+
+> **{"sell": [], "buy": [], "calls": [], "puts": ["TSLA"]}**
+
+**"Disclaimer, I am short Aug 100 covered calls. I am also long AAPL (though that's implied)."**
+
+> **{"sell": [], "buy": ["AAPL"], "calls": [], "puts": []}**
+
+**"looks like CSIQ is about to turn around tmr...."**
+
+> **{"sell": [], "buy": ["CSIQ"], "calls": [], "puts": []}**
+
+**"GPRO October $60 Puts"**
+
+> **{"sell": [], "buy": [], "calls": [], "puts": ["GPRO"]}**
+
 
 
 ## Outline
