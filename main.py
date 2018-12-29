@@ -5,10 +5,14 @@ import dateparser as dp
 import threading
 import random
 import time
+from collections import Counter
+import math
 
 COLUMNS = ['open', 'high', 'low', 'close']
 IS_TICKER = re.compile("[A-Z]{1,4}|\d{1,3}(?=\.)|\d{4,}")
 # This is a regex that determines if a string is a stock ticker
+
+WSB_DATASET = "/media/christopher/ssd/wsbData.json"
 
 def get_all_possible_tickers(fileName="companylist.csv"):
 	with open(fileName, 'rb') as f:
@@ -152,8 +156,53 @@ def random_string(stringVal):
 	# Should return float or int
 	return float(stringVal)
 
+def text_entropy(s):
+	p, lns = Counter(s), float(len(s))
+	return -sum( count/lns * math.log(count/lns, 2) for count in p.values())
+
 def calc_words(stringVal):
 	return stringVal.count(" ")
+
+class DatasetProcess(object):
+	def __init__(self, function, createNew=False, verbose=True, threads=1, saveAs=False):
+		self.lock = threading.Lock()
+		self.threads = threads
+		# This is the lock for multithreading
+		self.functionVal = function
+		self.totalRuns = 0
+		self.totalCount = 0
+		self.results = {}
+		self.totalTime = 0
+		self.forumnData = {}
+		self.saveAs = saveAs
+		self.verbose = verbose
+
+	def save(self, fileName):
+		with open(fileName, 'w') as fp:
+			json.dump(self.forumnData, fp)
+
+	def run(self):
+		with open(WSB_DATASET) as f:
+			for i, line in enumerate(f):
+				val = json.loads(line)
+				dayVal = convert_date(val['created_utc'])
+				if dayVal not in self.forumnData:
+					self.forumnData[dayVal] = []
+				self.forumnData[dayVal].append(self.functionVal(val['body']))
+				if self.verbose == True:
+					if i % 2000 == 0:
+						print i
+		if self.saveAs != False:
+			self.save(saveAs)
+		return self.forumnData
+
+	def get_average(self):
+		self.average = (float(self.totalCount) / float(self.totalRuns))
+		return self.average
+
+	def get_diff_from_average(self):
+		self.average = (float(self.totalCount) / float(self.totalRuns))
+		return [x - self.average for x in self.toReturn]
 
 class MultiThread(object):
 	def __init__(self, listOfObjects, function, threads=1):
@@ -223,8 +272,6 @@ class Algo(object):
 		# This contains the forumn dataset
 		#self.read_forumn_data()
 		# Reads the dataset
-
-
 
 	def read_dataset(self, filename="vixcurrent.csv"):
 		csvFile = read_csv(filename)
