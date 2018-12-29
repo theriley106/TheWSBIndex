@@ -39,6 +39,16 @@ def get_all_info_by_ticker(tickerVal):
 		if x[0] == tickerVal:
 			return x
 
+def get_count_by_ticker(tickerVal):
+	# This is super hacky because the tickers are stored as a string like F,TSLA,ETC.
+	sql_command = """SELECT tickers FROM comments WHERE tickers LIKE '%{}%';""".format(tickerVal)
+	totalCount = 0
+	for val in db.run_command(sql_command):
+		tickers = [x.upper() for x in val[0].split(",") if len(x) > 0]
+		if tickerVal.upper() in tickers:
+			totalCount += 1
+	return totalCount
+
 def get_sentiment_by_ticker(tickerVal):
 	# This is super hacky because the tickers are stored as a string like F,TSLA,ETC.
 	sql_command = """SELECT polarity, tickers FROM comments WHERE tickers LIKE '%{}%';""".format(tickerVal)
@@ -81,6 +91,11 @@ def convert_date(dateVal):
 	# Converts to format 2004-01-05
 	dt = dp.parse(dateVal)
 	return dt.date()
+
+def get_weekday(dateVal):
+	# Converts to format 2004-01-05
+	dt = dp.parse(dateVal)
+	return dt.weekday()
 
 def extract_tickers(string):
 	e = re.findall('[A-Z]{1,4}|\d{1,3}(?=\.)|\d{4,}', string)
