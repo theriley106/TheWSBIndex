@@ -13,6 +13,7 @@ import db
 COLUMNS = ['open', 'high', 'low', 'close']
 IS_TICKER = re.compile("[A-Z]{1,4}|\d{1,3}(?=\.)|\d{4,}")
 # This is a regex that determines if a string is a stock ticker
+COMPANY_LIST = "companylist.csv"
 
 WSB_DATASET = "/media/christopher/ssd/wsbData.json"
 
@@ -21,6 +22,14 @@ def get_all_possible_tickers(fileName="companylist.csv"):
 		reader = csv.reader(f)
 		your_list = list(reader)
 	return [x[0] for x in your_list[1:]]
+
+def get_company_by_ticker(tickerVal):
+	with open(COMPANY_LIST, 'rb') as f:
+		reader = csv.reader(f)
+		your_list = list(reader)
+	for x in your_list[1:]:
+		if x[0] == tickerVal:
+			return x[1]
 
 def get_sentiment_by_ticker(tickerVal):
 	# This is super hacky because the tickers are stored as a string like F,TSLA,ETC.
