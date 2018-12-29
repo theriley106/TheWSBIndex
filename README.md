@@ -5,6 +5,47 @@
 <h3 align="center">An algorithmic trading strategy to predict market volatility from /r/WallStreetBets comments</h3>
 </p>
 
+## Analysis
+
+### Top Securities by Total Comment Mentions
+
+|Ticker|Mentions|Company|Sector|Industry|
+| ------------- |:-------------:|:-----:|:-------------:|:-----:|
+|MU|33450|Micron Technology, Inc.|Technology|Semiconductors|
+|AMD|32526|Advanced Micro Devices, Inc.|Technology|Semiconductors|
+|TSLA|12079|Tesla, Inc. |Capital Goods|Auto Manufacturing|
+|AAPL|11760|Apple Inc.|Technology|Computer Manufacturing|
+|NVDA|11087|NVIDIA Corporation|Technology|Semiconductors|
+|AMZN|10835|Amazon.com, Inc.|Consumer Services|Catalog/Specialty Distribution|
+|FB|10827|Facebook, Inc.|Technology|Computer Software: Programming, Data Processing|
+|Z|9188|Zillow Group, Inc.|Miscellaneous|Business Services|
+|MSFT|8137|Microsoft Corporation|Technology|Computer Software: Prepackaged Software|
+|QQQ|4939|Invesco QQQ Trust, Series 1|n/a|n/a|
+
+### Best Securities by Sentiment Polarity (w/ 50+ Mentions)
+
+|Ticker|Sentiment|Company|Sector|Industry|
+| ------------- |:-------------:|:-----:|:-------------:|:-----:|
+|GOOD|0.4238|Gladstone Commercial Corporation|Consumer Services|Real Estate|
+|NICE|0.4114|NICE Ltd|Technology|Computer Manufacturing|
+|WIN|0.4112|Windstream Holdings, Inc.|Public Utilities|Telecommunications Equipment|
+|LOVE|0.2962|The Lovesac Company|Consumer Services|Other Specialty Stores|
+|STRO|0.2424|Sutro Biopharma, Inc.|Health Care|Biotechnology: Biological Products (No Diagnostic Substances)|
+
+#### This result showed a clear bias for tickers that contain words found in the english language.  The sentiment analysis will have to be rerun with sentiment-neutral words replacing the stock tickers that are present within the comment.
+
+
+### Worst Securities by Sentiment Polarity (w/ 50+ Mentions)
+
+|Ticker|Sentiment|Company|Sector|Industry|
+| ------------- |:-------------:|:-----:|:-------------:|:-----:|
+|RETA|-0.3441|Reata Pharmaceuticals, Inc.|Health Care|Major Pharmaceuticals|
+|SELF|-0.0832|Global Self Storage, Inc.|Consumer Services|Real Estate Investment Trusts|
+|CENT|-0.0488|Central Garden & Pet Company|Consumer Durables|Consumer Specialties|
+|EXPI|-0.0427|eXp World Holdings, Inc.|Finance|Real Estate|
+|DARE|-0.0419|Dare Bioscience, Inc.|Health Care|Major Pharmaceuticals|
+
+
 ## Data Visualizations
 
 ### Top-20 Stock Tickers by Total Mentions
@@ -151,44 +192,3 @@ for sentence in comment:
 **"GPRO October $60 Puts"**
 
 > **{"sell": [], "buy": [], "calls": [], "puts": ["GPRO"]}**
-
-
-## Analysis
-
-### Top Securities by Total Comment Mentions
-
-|Ticker|Mentions|Company|Sector|Industry|
-| ------------- |:-------------:|:-----:|:-------------:|:-----:|
-|MU|33450|Micron Technology, Inc.|Technology|Semiconductors|
-|AMD|32526|Advanced Micro Devices, Inc.|Technology|Semiconductors|
-|TSLA|12079|Tesla, Inc. |Capital Goods|Auto Manufacturing|
-|AAPL|11760|Apple Inc.|Technology|Computer Manufacturing|
-|NVDA|11087|NVIDIA Corporation|Technology|Semiconductors|
-|AMZN|10835|Amazon.com, Inc.|Consumer Services|Catalog/Specialty Distribution|
-|FB|10827|Facebook, Inc.|Technology|Computer Software: Programming, Data Processing|
-|Z|9188|Zillow Group, Inc.|Miscellaneous|Business Services|
-|MSFT|8137|Microsoft Corporation|Technology|Computer Software: Prepackaged Software|
-|QQQ|4939|Invesco QQQ Trust, Series 1|n/a|n/a|
-
-### Best Securities by Sentiment Polarity (w/ 50+ Mentions)
-
-|Ticker|Sentiment|Company|Sector|Industry|
-| ------------- |:-------------:|:-----:|:-------------:|:-----:|
-|GOOD|0.4238|Gladstone Commercial Corporation|Consumer Services|Real Estate|
-|NICE|0.4114|NICE Ltd|Technology|Computer Manufacturing|
-|WIN|0.4112|Windstream Holdings, Inc.|Public Utilities|Telecommunications Equipment|
-|LOVE|0.2962|The Lovesac Company|Consumer Services|Other Specialty Stores|
-|STRO|0.2424|Sutro Biopharma, Inc.|Health Care|Biotechnology: Biological Products (No Diagnostic Substances)|
-
-#### This result showed a clear bias for tickers that contain words found in the english language.  The sentiment analysis will have to be rerun with sentiment-neutral words replacing the stock tickers that are present within the comment.
-
-
-### Worst Securities by Sentiment Polarity (w/ 50+ Mentions)
-
-|Ticker|Sentiment|Company|Sector|Industry|
-| ------------- |:-------------:|:-----:|:-------------:|:-----:|
-|RETA|-0.3441|Reata Pharmaceuticals, Inc.|Health Care|Major Pharmaceuticals|
-|SELF|-0.0832|Global Self Storage, Inc.|Consumer Services|Real Estate Investment Trusts|
-|CENT|-0.0488|Central Garden & Pet Company|Consumer Durables|Consumer Specialties|
-|EXPI|-0.0427|eXp World Holdings, Inc.|Finance|Real Estate|
-|DARE|-0.0419|Dare Bioscience, Inc.|Health Care|Major Pharmaceuticals|
