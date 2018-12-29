@@ -7,6 +7,8 @@ import random
 import time
 from collections import Counter
 import math
+from textblob import TextBlob
+import db
 
 COLUMNS = ['open', 'high', 'low', 'close']
 IS_TICKER = re.compile("[A-Z]{1,4}|\d{1,3}(?=\.)|\d{4,}")
@@ -20,6 +22,23 @@ def get_all_possible_tickers(fileName="companylist.csv"):
 		your_list = list(reader)
 	return [x[0] for x in your_list[1:]]
 
+def get_sentiment_by_ticker(tickerVal):
+	# This is super hacky because the tickers are stored as a string like F,TSLA,ETC.
+	sql_command = """SELECT polarity, tickers FROM comments WHERE tickers LIKE '%{}%';""".format(tickerVal)
+	totalVal = 0
+	totalCount = 0
+	for val in db.run_command(sql_command):
+		sentiment = val[0]
+		tickers = [x.upper() for x in val[1].split(",") if len(x) > 0]
+		if tickerVal.upper() in tickers:
+			totalVal += sentiment
+			totalCount += 1
+	if totalCount == 0:
+		return 0
+	return float(totalVal) / float(totalCount)
+
+
+
 STOCK_TICKERS = get_all_possible_tickers()
 STOCK_TICKERS.remove("EDIT")
 
@@ -28,6 +47,9 @@ def read_csv(filename):
 	with open(filename, 'rb') as f:
 		reader = csv.reader(f)
 		return list(reader)
+
+def get_sentiment(stringVal):
+	return TextBlob(stringVal)
 
 def convert_date(dateVal):
 	# Converts to format 2004-01-05
@@ -193,7 +215,7 @@ class DatasetProcess(object):
 					if i % 2000 == 0:
 						print i
 		if self.saveAs != False:
-			self.save(saveAs)
+			self.save(self.saveAs)
 		return self.forumnData
 
 	def get_average(self):
@@ -386,12 +408,12 @@ if __name__ == '__main__':
 	#listOfObjects = range(1,100)
 	#objectVal = [{'id': x, 'val': e} for x, e in enumerate(listOfObjects)]
 	#print objectVal
-	c = open("comments.txt").read().split("\n")
-	a = MultiThread(c, calc_words)
-	g = a.run_all()
-	print g
-	print a.get_diff_from_average()
-	print a.totalTime
+	'''c = open("comments.txt").read().split("\n")
+				a = MultiThread(c, calc_words)
+				g = a.run_all()
+				print g
+				print a.get_diff_from_average()
+				print a.totalTime'''
 	#a = MultiThread([str(i) for i in range(0,101)], random_string)
 	#b = a.run_all()
 	#print a.get_diff_from_average()
