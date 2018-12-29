@@ -100,6 +100,12 @@ for sentence in comment:
 
 ##### Note: This algo is only being used for stocks traded on the Nasdaq, hence certain *valid* stock tickers are considered *invalid* as we are not actively pursing information on them.
 
+Comment:
+> "Short GPRO"
+
+Result:
+> {"sell": ["GPRO"], "buy": [], "calls": [], "puts": []}
+
 #
 #
 ```javascript
