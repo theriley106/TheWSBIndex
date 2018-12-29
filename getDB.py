@@ -1,8 +1,15 @@
 import sqlite3
-import json
 
-connection = sqlite3.connect("myDB.db")
-cur = connection.cursor()
-cur.execute("SELECT * FROM comments")
-rows = cur.fetchall()
-print len(rows)
+def run_command(sqlCommand):
+	connection = sqlite3.connect("myDB.db")
+	cur = connection.cursor()
+	cur.execute(sqlCommand)
+	rows = cur.fetchall()
+	return rows
+
+
+
+
+if __name__ == '__main__':
+	result = run_command("""SELECT * FROM comments WHERE (body != "[deleted]")""")
+	print len(result)
