@@ -7,6 +7,27 @@
 
 ## Analysis
 
+### Best Securities by Sentiment Polarity
+
+|Ticker|Sentiment|Company|Sector|Industry|
+| ------------- |:-------------:|:-----:|:-------------:|:-----:|
+|CPTA|0.7|Capitala Finance Corp.|n/a|n/a|
+|GILT|0.7|Gilat Satellite Networks Ltd.|Technology|Radio And Television Broadcasting And Communications Equipment|
+|EFAS|0.7|Global X MSCI SuperDividend EAFE ETF|n/a|n/a|
+|GSIT|0.7|GSI Technology, Inc.|Technology|Semiconductors|
+|PXI|0.7|Invesco DWA Energy Momentum ETF|n/a|n/a|
+
+
+### Worst Securities by Sentiment Polarity
+
+|Ticker|Sentiment|Company|Sector|Industry|
+| ------------- |:-------------:|:-----:|:-------------:|:-----:|
+|WMGI|-0.91|Wright Medical Group N.V.|Health Care|Industrial Specialties|
+|TCMD|-0.8125|Tactile Systems Technology, Inc.|Health Care|Medical/Dental Instruments|
+|OMEX|-0.75|Odyssey Marine Exploration, Inc.|Consumer Services|Marine Transportation|
+|PEBK|-0.75|Peoples Bancorp of North Carolina, Inc.|Finance|Major Banks|
+|HOMB|-0.7|Home BancShares, Inc.|Finance|Major Banks|
+
 ## Data Visualizations
 
 ### Top-20 Stock Tickers by Total Mentions
