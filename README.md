@@ -46,7 +46,7 @@
 |DARE|-0.0419|Dare Bioscience, Inc.|Health Care|Major Pharmaceuticals|
 
 ### Most Active Posters on /r/WallStreetBets (Excluding Bots)
-|Username|Total Comments|Most Mentioned Ticker|Average Sentiment|
+|Username|Total Comments|Average Sentiment|Most Mentioned Ticker|
 | ------------- |:-------:|:-----:|:-------------:|
 theycallme1 | 16967 | 0.0249 | Z |
 avgazn247 | 14042 | 0.0247 | MU |
