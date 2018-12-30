@@ -47,7 +47,7 @@
 
 ### Most Active Posters on /r/WallStreetBets (Excluding Bots)
 |Username|Total Comments|Most Mentioned Ticker|Average Sentiment|
-| ------------- |:-------:|:-----:|:-------------:|:-----:|
+| ------------- |:-------:|:-----:|:-------------:|
 theycallme1 | 16967 | 0.026 | Z |
 avgazn247 | 14042 | 0.0324 | MU |
 SIThereAndThere | 7915 | 0.0148 | Z |
