@@ -45,19 +45,19 @@
 |EXPI|-0.0427|eXp World Holdings, Inc.|Finance|Real Estate|
 |DARE|-0.0419|Dare Bioscience, Inc.|Health Care|Major Pharmaceuticals|
 
-### Tickers based on Trading Volume/Mentions Ratio
-|Ticker|Volume/Mention|
-| ------------- |:-------:|
-|PT|6.203|
-|LINK|8.3809|
-|OLD|10.0424|
-|PY|11.1917|
-|VALU|38.0743|
-|SELF|45.4174|
-|SG|51.3975|
-|BRAC|52.8569|
-|APM|53.5876|
-|SP|55.1967|
+### Tickers based on Trading Volume/Mention Ratio
+|Ticker|Volume/Mention|Company|Average Volume|Mentions|
+| ------------- |:-------:|:-------:|:-------:|:-------:|
+|PT|6.203|Pintec Technology Holdings Limited|9143|1471|
+|LINK|8.3809|Interlink Electronics, Inc.|5540|661|
+|OLD|10.0424|The Long-Term Care ETF|1767|176|
+|PY|11.1917|Principal Shareholder Yield Index ETF|1701|153|
+|VALU|38.0743|Value Line, Inc.|3846|101|
+|SELF|45.4174|Global Self Storage, Inc.|12626|277|
+|SG|51.3975|Sirius International Insurance Group, Ltd.|4677|91|
+|BRAC|52.8569|Black Ridge Acquisition Corp.|31027|587|
+|APM|53.5876|Aptorum Group Limited|214|4|
+|SP|55.1967|SP Plus Corporation|73246|1323|
 
 ### Most Active Posters on /r/WallStreetBets (Excluding Bots)
 |Username|Total Comments|Average Sentiment|Most Mentioned Ticker|
