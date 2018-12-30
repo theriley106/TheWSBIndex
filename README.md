@@ -45,6 +45,20 @@
 |EXPI|-0.0427|eXp World Holdings, Inc.|Finance|Real Estate|
 |DARE|-0.0419|Dare Bioscience, Inc.|Health Care|Major Pharmaceuticals|
 
+### Tickers based on Trading Volume/Mentions Ratio
+|Ticker|Volume/Mention|
+| ------------- |:-------:|
+|PT|6.203|
+|LINK|8.3809|
+|OLD|10.0424|
+|PY|11.1917|
+|VALU|38.0743|
+|SELF|45.4174|
+|SG|51.3975|
+|BRAC|52.8569|
+|APM|53.5876|
+|SP|55.1967|
+
 ### Most Active Posters on /r/WallStreetBets (Excluding Bots)
 |Username|Total Comments|Average Sentiment|Most Mentioned Ticker|
 | ------------- |:-------:|:-----:|:-------------:|
