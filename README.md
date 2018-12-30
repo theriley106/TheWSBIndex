@@ -48,11 +48,11 @@
 ### Most Active Posters on /r/WallStreetBets (Excluding Bots)
 |Username|Total Comments|Most Mentioned Ticker|Average Sentiment|
 | ------------- |:-------:|:-----:|:-------------:|
-theycallme1 | 16967 | 0.026 | Z |
-avgazn247 | 14042 | 0.0324 | MU |
-SIThereAndThere | 7915 | 0.0148 | Z |
+theycallme1 | 16967 | 0.0249 | Z |
+avgazn247 | 14042 | 0.0247 | MU |
+SIThereAndThere | 7915 | 0.0151 | Z |
 brutalpancake | 6022 | 0.0288 | MU |
-Macabilly | 5554 | 0.0236 | AMD |
+Macabilly | 5554 | 0.0165 | AMD |
 
 ## Data Visualizations
 
