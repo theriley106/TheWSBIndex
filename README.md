@@ -45,6 +45,14 @@
 |EXPI|-0.0427|eXp World Holdings, Inc.|Finance|Real Estate|
 |DARE|-0.0419|Dare Bioscience, Inc.|Health Care|Major Pharmaceuticals|
 
+### Most Active Posters on /r/WallStreetBets (Excluding Bots)
+|Username|Total Comments|Most Mentioned Ticker|Average Sentiment|
+| ------------- |:-------:|:-----:|:-------------:|:-----:|
+theycallme1 | 16967 | 0.026 | Z |
+avgazn247 | 14042 | 0.0324 | MU |
+SIThereAndThere | 7915 | 0.0148 | Z |
+brutalpancake | 6022 | 0.0288 | MU |
+Macabilly | 5554 | 0.0236 | AMD |
 
 ## Data Visualizations
 
