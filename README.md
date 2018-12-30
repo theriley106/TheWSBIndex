@@ -65,7 +65,25 @@ SIThereAndThere | 7915 | 0.0151 | Z |
 brutalpancake | 6022 | 0.0288 | MU |
 Macabilly | 5554 | 0.0165 | AMD |
 
-### Most Popular Tickers Based on Upvotes
+### Best Tickers Based on Average Upvote Count
+
+|Ticker|Average Upvotes|Company|Sector|Industry|
+| ------------- |:-------------:|:-----:|:-------------:|:-----:|
+|WASH|52.0|Washington Trust Bancorp, Inc.|Finance|Major Banks|
+|ALQA|44.0|Alliqua BioMedical, Inc.|Health Care|Medical/Dental Instruments|
+|FMBI|39.0|First Midwest Bancorp, Inc.|Finance|Major Banks|
+|POOL|33.0|Pool Corporation|Consumer Durables|Industrial Specialties|
+|LIND|31.0|Lindblad Expeditions Holdings Inc. |Consumer Services|Transportation Services|
+
+### Worst Tickers Based on Average Upvote Count
+
+|Ticker|Average Upvotes|Company|Sector|Industry|
+| ------------- |:-------------:|:-----:|:-------------:|:-----:|
+|CNTY|-8.0|Century Casinos, Inc.|Consumer Services|Hotels/Resorts|
+|CTRN|-8.0|Citi Trends, Inc.|Consumer Services|Clothing/Shoe/Accessory Stores|
+|ABIL|-4.0|Ability Inc.|Consumer Durables|Telecommunications Equipment|
+|DOVA|-3.0|Dova Pharmaceuticals, Inc.|Health Care|Major Pharmaceuticals|
+|EEMA|-3.0|iShares MSCI Emerging Markets Asia ETF|n/a|n/a|
 
 ### Most Popular Tickers Per Day
 
