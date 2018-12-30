@@ -5,7 +5,7 @@
 <h3 align="center">An algorithmic trading strategy to predict market volatility from /r/WallStreetBets comments</h3>
 </p>
 
-## Analysis
+## Overall Analysis
 
 ### Top Securities by Total Comment Mentions
 
@@ -26,24 +26,21 @@
 
 |Ticker|Sentiment|Company|Sector|Industry|
 | ------------- |:-------------:|:-----:|:-------------:|:-----:|
-|GOOD|0.4238|Gladstone Commercial Corporation|Consumer Services|Real Estate|
-|NICE|0.4114|NICE Ltd|Technology|Computer Manufacturing|
-|WIN|0.4112|Windstream Holdings, Inc.|Public Utilities|Telecommunications Equipment|
-|LOVE|0.2962|The Lovesac Company|Consumer Services|Other Specialty Stores|
-|STRO|0.2424|Sutro Biopharma, Inc.|Health Care|Biotechnology: Biological Products (No Diagnostic Substances)|
-
-#### This result showed a clear bias for tickers that contain words found in the english language.  The sentiment analysis will have to be rerun with sentiment-neutral words replacing the stock tickers that are present within the comment.
-
+|AVXL|0.0675|Anavex Life Sciences Corp.|Health Care|Biotechnology: Commercial Physical & Biological Resarch|
+|GILD|0.0607|Gilead Sciences, Inc.|Health Care|Biotechnology: Biological Products (No Diagnostic Substances)|
+|SP|0.0521|SP Plus Corporation|Consumer Services|Rental/Leasing Companies|
+|TA|0.052|TravelCenters of America LLC|Consumer Durables|Automotive Aftermarket|
+|ATVI|0.0484|Activision Blizzard, Inc|Technology|Computer Software: Prepackaged Software|
 
 ### Worst Securities by Sentiment Polarity (w/ 50+ Mentions)
 
 |Ticker|Sentiment|Company|Sector|Industry|
 | ------------- |:-------------:|:-----:|:-------------:|:-----:|
-|RETA|-0.3441|Reata Pharmaceuticals, Inc.|Health Care|Major Pharmaceuticals|
-|SELF|-0.0832|Global Self Storage, Inc.|Consumer Services|Real Estate Investment Trusts|
-|CENT|-0.0488|Central Garden & Pet Company|Consumer Durables|Consumer Specialties|
-|EXPI|-0.0427|eXp World Holdings, Inc.|Finance|Real Estate|
-|DARE|-0.0419|Dare Bioscience, Inc.|Health Care|Major Pharmaceuticals|
+|EVER|0.0039|EverQuote, Inc.|Technology|Computer Software: Programming, Data Processing|
+|LE|0.0097|Lands End, Inc.|Consumer Services|Clothing/Shoe/Accessory Stores|
+|ON|0.0131|ON Semiconductor Corporation|Technology|Semiconductors|
+|TVIX|0.0197|Credit Suisse AG|Finance|Investment Bankers/Brokers/Service|
+|EA|0.0228|Electronic Arts Inc.|Technology|Computer Software: Prepackaged Software|
 
 ### Tickers based on Trading Volume/Mention Ratio
 |Ticker|Volume/Mention|Company|Average Volume|Mentions|
@@ -67,6 +64,23 @@ avgazn247 | 14042 | 0.0247 | MU |
 SIThereAndThere | 7915 | 0.0151 | Z |
 brutalpancake | 6022 | 0.0288 | MU |
 Macabilly | 5554 | 0.0165 | AMD |
+
+### Most Popular Tickers Based on Upvotes
+
+### Most Popular Tickers Per Day
+
+## Security-Specific Analysis
+
+### MU
+
+### AMD
+
+### TSLA
+
+### AAPL
+
+### NVDA
+
 
 ## Data Visualizations
 
