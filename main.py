@@ -85,6 +85,10 @@ def read_csv(filename):
 		return list(reader)
 
 def get_sentiment(stringVal):
+	# Replaces each ticker with TSLA as it's sentiment neutral
+	z = re.findall('[A-Z]{1,4}|\d{1,3}(?=\.)|\d{4,}', stringVal)
+	for val in set(z):
+		stringVal = stringVal.replace(val, "TSLA")
 	return TextBlob(stringVal)
 
 def convert_date(dateVal):
