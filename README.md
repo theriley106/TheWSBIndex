@@ -26,21 +26,21 @@
 
 |Ticker|Sentiment|Company|Sector|Industry|
 | ------------- |:-------------:|:-----:|:-------------:|:-----:|
-|AVXL|0.0675|Anavex Life Sciences Corp.|Health Care|Biotechnology: Commercial Physical & Biological Resarch|
-|GILD|0.0607|Gilead Sciences, Inc.|Health Care|Biotechnology: Biological Products (No Diagnostic Substances)|
-|SP|0.0521|SP Plus Corporation|Consumer Services|Rental/Leasing Companies|
-|TA|0.052|TravelCenters of America LLC|Consumer Durables|Automotive Aftermarket|
-|ATVI|0.0484|Activision Blizzard, Inc|Technology|Computer Software: Prepackaged Software|
+|SPWR|0.11|SunPower Corporation|Technology|Semiconductors|
+|NTES|0.0969|NetEase, Inc.|Miscellaneous|Business Services|
+|SWKS|0.0949|Skyworks Solutions, Inc.|Technology|Semiconductors|
+|NTLA|0.0927|Intellia Therapeutics, Inc.|Health Care|Biotechnology: In Vitro & In Vivo Diagnostic Substances|
+|ONCS|0.0912|OncoSec Medical Incorporated|Health Care|Major Pharmaceuticals|
 
 ### Worst Securities by Sentiment Polarity (w/ 50+ Mentions)
 
 |Ticker|Sentiment|Company|Sector|Industry|
 | ------------- |:-------------:|:-----:|:-------------:|:-----:|
-|EVER|0.0039|EverQuote, Inc.|Technology|Computer Software: Programming, Data Processing|
-|LE|0.0097|Lands End, Inc.|Consumer Services|Clothing/Shoe/Accessory Stores|
-|ON|0.0131|ON Semiconductor Corporation|Technology|Semiconductors|
-|TVIX|0.0197|Credit Suisse AG|Finance|Investment Bankers/Brokers/Service|
-|EA|0.0228|Electronic Arts Inc.|Technology|Computer Software: Prepackaged Software|
+|TRIL|-0.0415|Trillium Therapeutics Inc.|Health Care|Major Pharmaceuticals|
+|LION|-0.0412|Fidelity Southern Corporation|Finance|Major Banks|
+|LOCO|-0.0356|El Pollo Loco Holdings, Inc.|Consumer Services|Restaurants|
+|RETA|-0.0329|Reata Pharmaceuticals, Inc.|Health Care|Major Pharmaceuticals|
+|NEXT|-0.0319|NextDecade Corporation|Public Utilities|Oil & Gas Production|
 
 ### Tickers based on Trading Volume/Mention Ratio
 |Ticker|Volume/Mention|Company|Average Volume|Mentions|
