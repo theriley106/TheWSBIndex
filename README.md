@@ -93,6 +93,16 @@ Macabilly | 5554 | 0.0165 | AMD |
 
 ### MU
 
+Total Comments Mentioning Ticker:
+
+Average Sentiment Towards Ticker:
+
+Average Daily Mentions (ADM):
+
+#### Mentions Per Weekday
+
+#### Stock Performance vs. (Daily Mentions - Average Daily Mentions)
+
 ### AMD
 
 ### TSLA
@@ -253,3 +263,15 @@ for sentence in comment:
 ## First Comment
 
 Wednesday, April 11, 2012 4:46:43 PM
+
+## Notable Revisions
+
+### December 29th 2018
+
+|Ticker|Sentiment|Company|Sector|Industry|
+| ------------- |:-------------:|:-----:|:-------------:|:-----:|
+|GOOD|0.4238|Gladstone Commercial Corporation|Consumer Services|Real Estate|
+|NICE|0.4114|NICE Ltd|Technology|Computer Manufacturing|
+|WIN|0.4112|Windstream Holdings, Inc.|Public Utilities|Telecommunications Equipment|
+|LOVE|0.2962|The Lovesac Company|Consumer Services|Other Specialty Stores|
+|STRO|0.2424|Sutro Biopharma, Inc.|Health Care|Biotechnology: Biological Products (No Diagnostic Substances)|
