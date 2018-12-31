@@ -2,6 +2,9 @@ import main
 import json
 import traceback
 
+INVERSE = True
+DAY_DELAY = 14
+
 def by_word_count():
 	c = open("comments.txt").read().split("\n")
 	a = MultiThread(c, calc_words)
@@ -34,13 +37,19 @@ if __name__ == '__main__':
 			for val in h:
 				if val not in b:
 					h.remove(val)
-			for i in range(14,len(h)):
-				prevKey = h[i-14]
+			for i in range(DAY_DELAY,len(h)):
+				prevKey = h[i-DAY_DELAY]
 				key = h[i]
 				if key in b:
 					if directions[prevKey] != 0:
 						#raw_input(g[key])
-						if directions[prevKey] > 0:
+						if INVERSE:
+							if directions[prevKey] > 0:
+								start_amount += (start_amount * ((-1*g[key])*.01))
+							else:
+								start_amount += (start_amount * (g[key]*.01))
+						else:
+							if directions[prevKey] < 0:
 							start_amount += (start_amount * ((-1*g[key])*.01))
 						else:
 							start_amount += (start_amount * (g[key]*.01))
