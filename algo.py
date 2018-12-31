@@ -11,25 +11,23 @@ def by_word_countz():
 	a.run()
 
 if __name__ == '__main__':
-	tickerVal = raw_input("Ticker: ").upper()
-	b = main.get_diff_from_ticker(tickerVal)
-	total = 0
-	success = 0
-	incorrect = 0
-	for key, value in main.calc_predicted_direction(tickerVal).iteritems():
-		if key in b and value != 0:
-			total += 1
-			if value < 0:
-				if b[key] < 0:
-					success += 1
-				else:
-					incorrect += 1
-			else:
-				if b[key] > 0:
-					success += 1
-				else:
-					incorrect += 1
-	print("Correct: {}".format(success))
-	print("Incorrect: {}".format(incorrect))
-	print("Total: {}".format(total))
-
+	for tickerVal in main.STOCK_TICKERS:
+		try:
+			b = main.get_diff_from_ticker(tickerVal)
+			g = main.get_percent_diff_from_ticker(tickerVal)
+			start_amount = 1000000
+			total = 0
+			success = 0
+			incorrect = 0
+			for key, value in main.calc_predicted_direction(tickerVal).iteritems():
+				if key in b and value != 0:
+					if value < 0:
+						start_amount += start_amount * (-1*g[key])
+					else:
+						start_amount += start_amount * g[key]
+			"""print("Correct: {}".format(success))
+						print("Incorrect: {}".format(incorrect))
+						print("Total: {}".format(total))"""
+			print("{} - {}".format(tickerVal, (start_amount/1000000.0)*100))
+		except:
+			pass
