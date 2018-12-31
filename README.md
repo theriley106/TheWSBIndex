@@ -268,7 +268,7 @@ Wednesday, April 11, 2012 4:46:43 PM
 
 ### December 29th 2018
 
-Prior to December 29th, sentiment analysis was done on comments without consideration of the sentiment of the ticker itself.  This overlook returned biased results in favor of companies with ticker names that were valid words in the english dictionary.
+Prior to December 29th, sentiment analysis was done on comments without consideration of the sentiment of the ticker itself.  This overlook returned biased results in favor of companies with ticker names that doubled as valid words in the english dictionary.
 
 To fix this overlook, we modify the string prior to calculating sentiment so that all tickers are replaced with "TSLA" (a sentiment neutral ticker).
 
