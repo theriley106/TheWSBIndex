@@ -5,6 +5,7 @@ import dateparser as dp
 import threading
 import random
 import time
+import datetime
 from collections import Counter
 import math
 from textblob import TextBlob
@@ -16,6 +17,7 @@ IS_TICKER = re.compile("[A-Z]{1,4}|\d{1,3}(?=\.)|\d{4,}")
 COMPANY_LIST = "companylist.csv"
 
 WSB_DATASET = "/media/christopher/ssd/wsbData.json"
+HISTORICAL_DATA = "data/{0}.csv"
 
 def get_all_possible_tickers(fileName="companylist.csv"):
 	with open(fileName, 'rb') as f:
@@ -39,6 +41,79 @@ def get_all_info_by_ticker(tickerVal):
 		if x[0] == tickerVal:
 			return x
 
+def get_average_volume_by_ticker(tickerVal):
+	try:
+		with open(HISTORICAL_DATA.format(tickerVal), 'rb') as f:
+			reader = csv.reader(f)
+			your_list = list(reader)
+		total = 0
+		count = 0
+		for x in your_list[1:]:
+			try:
+				total += int(x[-1])
+				count += 1
+			except:
+				pass
+		return (float(total) / float(count))
+	except Exception as exp:
+		print exp
+		return 0
+
+def get_total_count_by_ticker(tickerVal):
+	a = json.load(open("dataset/AllCounts.json"))
+	return a[tickerVal]
+
+def get_day_difference_between_utc(utcTime):
+	a = datetime.datetime.now().date()
+	b = convert_date(utcTime)
+	delta = a - b
+	return delta.days
+
+def get_dates():
+	sql_command = """SELECT dateVal FROM comments;"""
+	totalCount = 0
+	dates = []
+	for val in set(db.run_command(sql_command)):
+		dateVal = val[0]
+		if dateVal not in dates:
+			dates.append(dateVal)
+	return dates
+
+def get_total_count_dates(dateVal):
+	sql_command = """SELECT count(body) FROM comments WHERE dateVal = '{}';""".format(dateVal)
+	return db.run_command(sql_command)
+
+def get_total_ticker_count_dates(tickerVal):
+	a = json.load(open("dataset/totalByDate.json"))
+	info = {}
+	for key, val in a.iteritems():
+		info[key] = 0
+	sql_command = """SELECT dateVal, tickers FROM comments WHERE tickers LIKE '%{}%';""".format(tickerVal)
+	for val in db.run_command(sql_command):
+		dateVal = val[0]
+		tickers = [x.upper() for x in val[1].split(",") if len(x) > 0]
+		if tickerVal.upper() in tickers:
+			info[dateVal] += 1
+	return info
+
+def calc_average_daily_comment_ratio(tickerVal):
+	a = json.load(open("dataset/totalByDate.json"))
+	info = {}
+	for key, val in a.iteritems():
+		info[key] = 0
+	sql_command = """SELECT dateVal, tickers FROM comments WHERE tickers LIKE '%{}%';""".format(tickerVal)
+	for val in db.run_command(sql_command):
+		dateVal = val[0]
+		tickers = [x.upper() for x in val[1].split(",") if len(x) > 0]
+		if tickerVal.upper() in tickers:
+			info[dateVal] += 1
+	totalRatio = 0.0
+	totalCount = 0
+	for key, val in info.iteritems():
+		totalRatio += float(info[key]) / float(a[key])
+		totalCount += 1
+	return totalRatio / float(totalCount)
+
 def get_count_by_ticker(tickerVal):
 	# This is super hacky because the tickers are stored as a string like F,TSLA,ETC.
 	sql_command = """SELECT tickers FROM comments WHERE tickers LIKE '%{}%';""".format(tickerVal)
@@ -48,6 +123,48 @@ def get_count_by_ticker(tickerVal):
 		if tickerVal.upper() in tickers:
 			totalCount += 1
 	return totalCount
+
+def get_weekday_by_ticker(tickerVal):
+	# This is super hacky because the tickers are stored as a string like F,TSLA,ETC.
+	info = {}
+	sql_command = """SELECT weekday, tickers FROM comments WHERE tickers LIKE '%{}%';""".format(tickerVal)
+	totalVal = 0
+	totalCount = 0
+	for val in db.run_command(sql_command):
+		weekday = str(val[0])
+		tickers = [x.upper() for x in val[1].split(",") if len(x) > 0]
+		if tickerVal.upper() in tickers:
+			if weekday not in info:
+				info[weekday] = 0
+			info[weekday] += 1
+	return info
+
+def get_first_comment_with_ticker(tickerVal):
+	sql_command = """SELECT created_utc, tickers FROM comments WHERE tickers LIKE '%{}%';""".format(tickerVal)
+	largest_num = 0
+	for val in db.run_command(sql_command):
+		utcTime = str(val[0])
+		tickers = [x.upper() for x in val[1].split(",") if len(x) > 0]
+		if tickerVal.upper() in tickers:
+			z = get_day_difference_between_utc(utcTime)
+			if z > largest_num:
+				largest_num = z
+	return largest_num
+
+def get_average_by_ticker(tickerVal):
+	# This is super hacky because the tickers are stored as a string like F,TSLA,ETC.
+	info = {}
+	sql_command = """SELECT weekday, tickers FROM comments WHERE tickers LIKE '%{}%';""".format(tickerVal)
+	totalVal = 0
+	totalCount = 0
+	for val in db.run_command(sql_command):
+		weekday = str(val[0])
+		tickers = [x.upper() for x in val[1].split(",") if len(x) > 0]
+		if tickerVal.upper() in tickers:
+			if weekday not in info:
+				info[weekday] = 0
+			info[weekday] += 1
+	return info
 
 def get_sentiment_by_ticker(tickerVal):
 	# This is super hacky because the tickers are stored as a string like F,TSLA,ETC.
@@ -63,6 +180,23 @@ def get_sentiment_by_ticker(tickerVal):
 	if totalCount == 0:
 		return 0
 	return float(totalVal) / float(totalCount)
+
+def get_average_upvotes_by_ticker(tickerVal):
+	# This is super hacky because the tickers are stored as a string like F,TSLA,ETC.
+	sql_command = """SELECT ups, tickers FROM comments WHERE tickers LIKE '%{}%';""".format(tickerVal)
+	totalVal = 0
+	totalCount = 0
+	for val in db.run_command(sql_command):
+		sentiment = val[0]
+		tickers = [x.upper() for x in val[1].split(",") if len(x) > 0]
+		if tickerVal.upper() in tickers:
+			if sentiment != None:
+				totalVal += sentiment
+				totalCount += 1
+	if totalCount == 0:
+		return 0
+	return float(totalVal) / float(totalCount)
+
 
 def get_yolo_comments():
 	# This returns tickers that are used in "YOLO" comments
