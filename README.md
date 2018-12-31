@@ -5,6 +5,8 @@
 <h3 align="center">An algorithmic trading strategy to predict market volatility from /r/WallStreetBets comments</h3>
 </p>
 
+<h2 align=center><a href="https://www.kaggle.com/theriley106/wallstreetbetscomments">Download the Dataset Here</a></h2>
+
 ## Overall Analysis
 
 ### Top Securities by Total Comment Mentions
