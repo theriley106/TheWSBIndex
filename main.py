@@ -114,6 +114,35 @@ def calc_average_daily_comment_ratio(tickerVal):
 		totalCount += 1
 	return totalRatio / float(totalCount)
 
+def calc_predicted_direction(tickerVal):
+	a = json.load(open("dataset/totalByDate.json"))
+	info = {}
+	for key, val in a.iteritems():
+		info[key] = 0
+	sql_command = """SELECT dateVal, tickers FROM comments WHERE tickers LIKE '%{}%';""".format(tickerVal)
+	for val in db.run_command(sql_command):
+		dateVal = val[0]
+		tickers = [x.upper() for x in val[1].split(",") if len(x) > 0]
+		if tickerVal.upper() in tickers:
+			info[dateVal] += 1
+	totalRatio = 0.0
+	totalCount = 0
+	for key, val in info.iteritems():
+		totalRatio += float(info[key]) / float(a[key])
+		totalCount += 1
+	averageVal = totalRatio / float(totalCount)
+	trades = {}
+	for key, value in a.iteritems():
+		trades[key] = 0
+	for key, value in info.iteritems():
+		thisAvg = float(info[key]) / float(a[key])
+		diffVal = thisAvg - averageVal
+		if diffVal > 0:
+			trades[key] = 1
+		else:
+			trades[key] = -1
+	return trades
+
 def get_count_by_ticker(tickerVal):
 	# This is super hacky because the tickers are stored as a string like F,TSLA,ETC.
 	sql_command = """SELECT tickers FROM comments WHERE tickers LIKE '%{}%';""".format(tickerVal)
