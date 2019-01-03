@@ -19,6 +19,7 @@ COMPANY_LIST = "companylist.csv"
 WSB_DATASET = "/media/christopher/ssd/wsbData.json"
 HISTORICAL_DATA = "data/{0}.csv"
 ALL_COUNTS = "dataset/AllCounts.json"
+DATES = json.load(open("dataset/ListOfDatesOrder.json"))
 
 def get_all_possible_tickers(fileName="companylist.csv"):
 	with open(fileName, 'rb') as f:
@@ -652,7 +653,17 @@ class Trade():
 		# This contains the overall sentiment towards the ticker
 		self.total_count = get_total_count_by_ticker(ticker)
 		# Contains the total amount of mentions for this ticker
-		self.ticker_count_ranking = calc_stock_ranking(ticker)
+		self.ticker_ranking = calc_stock_ranking(ticker)
+		self.historical_data = get_diff_from_ticker(ticker)
+		# Contains difference in open-close price for a given day
+		# type (dict[date])
+		self.percent_diff = get_percent_diff_from_ticker(ticker)
+		# Percentage difference per day
+		self.all_dates = DATES
+		self.modified_dates = [x for x in self.all_dates if x in self.historical_data]
+
+	def test_strategy(self, function):
+		function(self)
 
 
 
@@ -697,4 +708,4 @@ if __name__ == '__main__':
 	#b = a.run_all()
 	#print a.get_diff_from_average()
 	#print b
-	print calc_stock_ranking("MU")
+	print get_diff_from_ticker("MU")
