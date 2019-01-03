@@ -268,11 +268,15 @@ def get_average_upvotes_by_ticker(tickerVal):
 		return 0
 	return float(totalVal) / float(totalCount)
 
-def get_all_counts():
+def get_all_counts(sort=True, reverse=False):
 	h = []
 	g = json.load(open(ALL_COUNTS))
 	for key, val in g.iteritems():
 		h.append({'count': val, 'ticker': key})
+	if sort == True:
+		h = sorted(h, key=lambda k: k['count'])
+	if reverse == True:
+		h = h[::-1]
 	return h
 
 def get_yolo_comments():
