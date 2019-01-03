@@ -15,51 +15,36 @@ def by_word_countz():
 	a = DatasetProcess(calc_words, saveAs="myFile.json")
 	a.run()
 
-if __name__ == '__main__':
-	g = json.load(open("dataset/AllCounts.json"))
-	h = []
-	a = json.load(open('sentimentByTicker.json'))
-	for key, val in g.iteritems():
-		h.append({'count': val, 'ticker': key})
-	newlist = sorted(h, key=lambda k: k['count'])
-	i = 0
-	for tickerVal in newlist[::-1]:
-		tickerVal = tickerVal['ticker']
-		try:
-			b = main.get_diff_from_ticker(tickerVal)
-			g = main.get_percent_diff_from_ticker(tickerVal)
-			start_amount = 1000000
-			total = 0
-			success = 0
-			incorrect = 0
-			h = json.load(open("dataset/ListOfDatesOrder.json"))
-			directions = main.calc_predicted_direction(tickerVal)
-			for val in h:
-				if val not in b:
-					h.remove(val)
-			for i in range(DAY_DELAY,len(h)):
-				prevKey = h[i-DAY_DELAY]
-				key = h[i]
-				if key in b:
-					if directions[prevKey] != 0:
-						#raw_input(g[key])
-						if INVERSE:
-							if directions[prevKey] > 0:
-								start_amount += (start_amount * ((-1*g[key])*.01))
-							else:
-								start_amount += (start_amount * (g[key]*.01))
-						else:
-							if directions[prevKey] < 0:
-							start_amount += (start_amount * ((-1*g[key])*.01))
-						else:
-							start_amount += (start_amount * (g[key]*.01))
-			"""print("Correct: {}".format(success))
-						print("Incorrect: {}".format(incorrect))
-						print("Total: {}".format(total))"""
-			if start_amount - 1000000 > 0:
-				print("{} - +{}".format(tickerVal, start_amount - 1000000))
+def strategy0(tradeClass):
+	description = """Going long on the stock"""
+	strategy = {'trades': {}, 'delay': 0, "description": description}
+	for date, ratio in tradeClass.ratio_by_date.iteritems():
+		strategy['trades'][date] = {"trade": "long"}
+	return strategy
+
+def strategy1(tradeClass):
+	description = """Trading based off of changes in ticker mention frequency"""
+	strategy = {'trades': {}, 'delay': 0, "description": description}
+	for date, ratio in tradeClass.ratio_by_date.iteritems():
+		diffVal = (ratio - tradeClass.average_ratio)
+		if abs(diffVal / tradeClass.average_ratio) * 100 < 25:
+			strategy['trades'][date] = {"trade": None}
+		else:
+			if diffVal > 0:
+				strategy['trades'][date] = {"trade": "long"}
 			else:
-				print("{} - {}".format(tickerVal, (start_amount - 1000000)))
-		except Exception as exp:
-			#traceback.print_exc()
+				strategy['trades'][date] = {"trade": "short"}
+	return strategy
+
+def strategy2(tradeClass):
+	dayDelay = 14
+	for i in range(dayDelay, len(tradeClass.modified_dates)):
+		indicatorDay = tradeClass.modified_dates[i-dayDelay]
+		tradeDay = tradeClass.modified_dates[i]
+		if indicatorDay in tradeClass.historical_data:
 			pass
+
+
+if __name__ == '__main__':
+	a = main.Trade("TSLA")
+	print a.test_strategy(strategy0, 1000000)
