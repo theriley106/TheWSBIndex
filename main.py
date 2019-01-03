@@ -635,14 +635,24 @@ class Algo(object):
 
 	#def calc_forumn_frequency(self):
 
+def calc_stock_ranking(tickerVal):
+	for i, val in enumerate(get_all_counts(reverse=True)):
+		if val['ticker'] == tickerVal:
+			break
+	return i
+
 class Trade():
 	"""docstring for Trade"""
 	def __init__(self, ticker):
 		self.ticker = ticker
-		self.all_counts = get_all_counts(reverse=True)
+		#self.all_counts = get_all_counts(reverse=True)
 		# Contains total counts by stock ticker
+		# dict(count, ticker)
 		self.overall_sentiment = get_sentiment_by_ticker(ticker)
 		# This contains the overall sentiment towards the ticker
+		self.total_count = get_total_count_by_ticker(ticker)
+		# Contains the total amount of mentions for this ticker
+		self.ticker_count_ranking = calc_stock_ranking(ticker)
 
 
 
@@ -687,3 +697,4 @@ if __name__ == '__main__':
 	#b = a.run_all()
 	#print a.get_diff_from_average()
 	#print b
+	print calc_stock_ranking("MU")
