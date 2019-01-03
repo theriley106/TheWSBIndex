@@ -18,6 +18,7 @@ COMPANY_LIST = "companylist.csv"
 
 WSB_DATASET = "/media/christopher/ssd/wsbData.json"
 HISTORICAL_DATA = "data/{0}.csv"
+ALL_COUNTS = "dataset/AllCounts.json"
 
 def get_all_possible_tickers(fileName="companylist.csv"):
 	with open(fileName, 'rb') as f:
@@ -58,6 +59,38 @@ def get_average_volume_by_ticker(tickerVal):
 	except Exception as exp:
 		print exp
 		return 0
+
+def get_diff_from_ticker(tickerVal):
+	info = {}
+	try:
+		with open(HISTORICAL_DATA.format(tickerVal), 'rb') as f:
+			reader = csv.reader(f)
+			your_list = list(reader)
+		for x in your_list[1:]:
+			#print x
+			try:
+				info[x[0]] = float(x[4]) - float(x[1])
+			except:
+				pass
+	except:
+		pass
+	return info
+
+def get_percent_diff_from_ticker(tickerVal):
+	info = {}
+	try:
+		with open(HISTORICAL_DATA.format(tickerVal), 'rb') as f:
+			reader = csv.reader(f)
+			your_list = list(reader)
+		for x in your_list[1:]:
+			#print x
+			try:
+				info[x[0]] = ((float(x[4]) - float(x[1])) / float(x[1])) * 100
+			except:
+				pass
+	except:
+		pass
+	return info
 
 def get_total_count_by_ticker(tickerVal):
 	a = json.load(open("dataset/AllCounts.json"))
@@ -137,10 +170,13 @@ def calc_predicted_direction(tickerVal):
 	for key, value in info.iteritems():
 		thisAvg = float(info[key]) / float(a[key])
 		diffVal = thisAvg - averageVal
-		if diffVal > 0:
-			trades[key] = 1
+		if ((abs(float(diffVal)) / averageVal) * 100) < 25:
+			trades[key] = 0
 		else:
-			trades[key] = -1
+			if diffVal > 0:
+				trades[key] = 1
+			else:
+				trades[key] = -1
 	return trades
 
 def get_count_by_ticker(tickerVal):
@@ -195,6 +231,7 @@ def get_average_by_ticker(tickerVal):
 			info[weekday] += 1
 	return info
 
+'''
 def get_sentiment_by_ticker(tickerVal):
 	# This is super hacky because the tickers are stored as a string like F,TSLA,ETC.
 	sql_command = """SELECT polarity, tickers FROM comments WHERE tickers LIKE '%{}%';""".format(tickerVal)
@@ -209,6 +246,11 @@ def get_sentiment_by_ticker(tickerVal):
 	if totalCount == 0:
 		return 0
 	return float(totalVal) / float(totalCount)
+'''
+
+def get_sentiment_by_ticker(tickerVal):
+	a = json.load(open('dataset/sentimentByTicker.json'))
+	return a[tickerVal]
 
 def get_average_upvotes_by_ticker(tickerVal):
 	# This is super hacky because the tickers are stored as a string like F,TSLA,ETC.
@@ -226,6 +268,12 @@ def get_average_upvotes_by_ticker(tickerVal):
 		return 0
 	return float(totalVal) / float(totalCount)
 
+def get_all_counts():
+	h = []
+	g = json.load(open(ALL_COUNTS))
+	for key, val in g.iteritems():
+		h.append({'count': val, 'ticker': key})
+	return h
 
 def get_yolo_comments():
 	# This returns tickers that are used in "YOLO" comments
@@ -582,6 +630,15 @@ class Algo(object):
 		return returnVal
 
 	#def calc_forumn_frequency(self):
+
+class Trade():
+	"""docstring for Trade"""
+	def __init__(self, ticker):
+		self.ticker = ticker
+		self.all_counts = get_all_counts()
+		# Contains total counts by stock ticker
+		self.overall_sentiment = get_sentiment_by_ticker(ticker)
+		# This contains the overall sentiment towards the ticker
 
 
 
