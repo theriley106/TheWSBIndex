@@ -16,7 +16,7 @@ def by_word_countz():
 	a.run()
 
 def strategy0(tradeClass):
-	description = """Going long on the stock"""
+	description = """Buying and holding the stock"""
 	strategy = {'trades': {}, 'delay': 0, "description": description}
 	for date, ratio in tradeClass.ratio_by_date.iteritems():
 		strategy['trades'][date] = {"trade": "long"}
@@ -47,4 +47,8 @@ def strategy2(tradeClass):
 
 if __name__ == '__main__':
 	a = main.Trade("TSLA")
-	print a.test_strategy(strategy0, 1000000)
+	startAmount = 1000000
+	buyAndHold = a.calc_buy_and_hold(startAmount)
+	strat1 = a.test_strategy(strategy1, startAmount)
+	print("Returns from buy and hold: ${:,.2f}".format(buyAndHold-startAmount))
+	print("Returns from Strategy 1: ${:,.2f}".format(strat1-startAmount))
