@@ -639,7 +639,7 @@ class Trade():
 	"""docstring for Trade"""
 	def __init__(self, ticker):
 		self.ticker = ticker
-		self.all_counts = get_all_counts()
+		self.all_counts = get_all_counts(reverse=True)
 		# Contains total counts by stock ticker
 		self.overall_sentiment = get_sentiment_by_ticker(ticker)
 		# This contains the overall sentiment towards the ticker
