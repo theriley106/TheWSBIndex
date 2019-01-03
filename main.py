@@ -61,6 +61,30 @@ def get_average_volume_by_ticker(tickerVal):
 		print exp
 		return 0
 
+def get_open_price_by_ticker(tickerVal, date):
+	try:
+		with open(HISTORICAL_DATA.format(tickerVal), 'rb') as f:
+			reader = csv.reader(f)
+			your_list = list(reader)
+		for x in your_list[1:]:
+			if x[0] == date:
+				return x[1]
+	except Exception as exp:
+		print exp
+		return 0
+
+def get_close_price_by_ticker(tickerVal, date):
+	try:
+		with open(HISTORICAL_DATA.format(tickerVal), 'rb') as f:
+			reader = csv.reader(f)
+			your_list = list(reader)
+		for x in your_list[1:]:
+			if x[0] == date:
+				return x[4]
+	except Exception as exp:
+		print exp
+		return 0
+
 def get_diff_from_ticker(tickerVal):
 	info = {}
 	try:
@@ -130,7 +154,7 @@ def get_total_ticker_count_dates(tickerVal):
 			info[dateVal] += 1
 	return info
 
-def calc_average_daily_comment_ratio(tickerVal):
+def calc_ratio_info(tickerVal):
 	a = json.load(open("dataset/totalByDate.json"))
 	info = {}
 	for key, val in a.iteritems():
@@ -144,9 +168,11 @@ def calc_average_daily_comment_ratio(tickerVal):
 	totalRatio = 0.0
 	totalCount = 0
 	for key, val in info.iteritems():
-		totalRatio += float(info[key]) / float(a[key])
+		ratio = float(info[key]) / float(a[key])
+		totalRatio += ratio
+		info[key] = ratio
 		totalCount += 1
-	return totalRatio / float(totalCount)
+	return {"average": totalRatio / float(totalCount), "dates": info}
 
 def calc_predicted_direction(tickerVal):
 	a = json.load(open("dataset/totalByDate.json"))
@@ -251,7 +277,9 @@ def get_sentiment_by_ticker(tickerVal):
 
 def get_sentiment_by_ticker(tickerVal):
 	a = json.load(open('dataset/sentimentByTicker.json'))
-	return a[tickerVal]
+	for val in a:
+		if val['ticker'] == tickerVal:
+			return val['sentiment']
 
 def get_average_upvotes_by_ticker(tickerVal):
 	# This is super hacky because the tickers are stored as a string like F,TSLA,ETC.
@@ -423,17 +451,9 @@ def extract_buy_or_sell(string):
 								info['calls'].append(tempList.pop())
 							break
 				info['buy'] += tempList
-
-
-		#e =
-		#[Ss]ell
-	#if len(e) > 1:
-	# This means it was a relatively complex sentence.
-	#for val in re.split("(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s", string):
-	#print val
-	#e = re.findall('[A-Z]{1,4}|\d{1,3}(?=\.)|\d{4,}', string)
-	#return list(set(e).intersection(set(STOCK_TICKERS)))
 	return info
+
+
 
 def random_string(stringVal):
 	# Should return float or int
@@ -646,7 +666,7 @@ class Trade():
 	"""docstring for Trade"""
 	def __init__(self, ticker):
 		self.ticker = ticker
-		#self.all_counts = get_all_counts(reverse=True)
+		self.all_counts = get_all_counts(reverse=True)
 		# Contains total counts by stock ticker
 		# dict(count, ticker)
 		self.overall_sentiment = get_sentiment_by_ticker(ticker)
@@ -661,9 +681,41 @@ class Trade():
 		# Percentage difference per day
 		self.all_dates = DATES
 		self.modified_dates = [x for x in self.all_dates if x in self.historical_data]
+		if len(self.modified_dates) == 0:
+			raise Exception("No Data for this stock")
+		x = calc_ratio_info(ticker)
+		# This calculates comment ratio for the ticker
+		self.ratio_by_date = x['dates']
+		# Comment ratio by date
+		self.average_ratio = x['average']
+		# This is the average comment ratio
 
-	def test_strategy(self, function):
-		function(self)
+	def short(self, date, amount):
+		return amount + (amount * ((-1*self.percent_diff[date])*.01))
+
+	def long(self, date, amount):
+		return amount + (amount * ((self.percent_diff[date])*.01))
+
+	def calc_buy_and_hold(self, balance):
+		a = get_open_price_by_ticker(self.ticker, self.modified_dates[0])
+		b = get_close_price_by_ticker(self.ticker, self.modified_dates[-1])
+		return balance * (float(b) / float(a))
+
+	def test_strategy(self, function, balance):
+		info = function(self)
+		dayDelay = info.get('delay', 0)
+		# Defaults to 0 delay
+		for i in range(dayDelay, len(self.modified_dates)):
+			indicatorDay = self.modified_dates[i-dayDelay]
+			tradeDay = self.modified_dates[i]
+			tradeType = info['trades'][indicatorDay].get('trade')
+			if tradeType != None:
+				if tradeType == 'short':
+					balance = self.short(tradeDay, balance)
+				elif tradeType == 'long':
+					balance = self.long(tradeDay, balance)
+		return balance
+
 
 
 
@@ -708,4 +760,7 @@ if __name__ == '__main__':
 	#b = a.run_all()
 	#print a.get_diff_from_average()
 	#print b
-	print get_diff_from_ticker("MU")
+	#print get_diff_from_ticker("MU")
+	a = Trade("TSLA")
+	for key, value in a.ratio_by_date.iteritems():
+		print("{} - {}".format(value, a.average_ratio))
