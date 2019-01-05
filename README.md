@@ -276,7 +276,7 @@ Prior to December 29th, sentiment analysis was done on comments without consider
 
 To fix this overlook, I modified the string prior to calculating sentiment so that all tickers are replaced with "TSLA" (a sentiment neutral ticker).
 
-An example of the bias caused by this overlook can be seen in the original *Best Securities by Sentiment Polarity* table below (initially published in [commit 89ddf9d](https://github.com/theriley106/TheWSBIndex/commit/89ddf9dd93d96ba8a1722ecc8d05b026feec75b3).
+An example of the bias caused by this overlook can be seen in the original *Best Securities by Sentiment Polarity* table below (initially published in [commit 89ddf9d](https://github.com/theriley106/TheWSBIndex/commit/89ddf9dd93d96ba8a1722ecc8d05b026feec75b3)).
 
 |Ticker|Sentiment|Company|Sector|Industry|
 | ------------- |:-------------:|:-----:|:-------------:|:-----:|
