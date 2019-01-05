@@ -9,8 +9,6 @@
 
 ## Overall Analysis
 
-### General
-
 <p style="font-size:14px;"">
   Total Comments: <b>2,979,131</b></p>
 
