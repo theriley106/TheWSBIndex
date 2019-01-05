@@ -11,6 +11,8 @@
 
 ### General
 
+<h5>Total Comments: <b>2,979,131</b></h5>
+
 ##### Total Comments: **2,979,131**
 
 ##### Total Comments Mentioning Valid Securities: **281,550**
