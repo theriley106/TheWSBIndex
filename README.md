@@ -14,12 +14,14 @@
 <p style="font-size:14px;"">
   Total Comments: <b>2,979,131</b></p>
 
-##### Total Comments: **2,979,131**
+<p style="font-size:14px;"">
+  Total Comments Mentioning Valid Securities: <b>281,550</b></p>
 
-##### Total Comments Mentioning Valid Securities: **281,550**
+<p style="font-size:14px;"">
+  First Comment: <b>Wednesday, April 11, 2012 4:46:43 PM</b></p>
 
-##### First Comment: **Wednesday, April 11, 2012 4:46:43 PM**
 #
+
 ### Top Securities by Total Comment Mentions
 
 |Ticker|Mentions|Company|Sector|Industry|
@@ -35,6 +37,8 @@
 |MSFT|8137|Microsoft Corporation|Technology|Computer Software: Prepackaged Software|
 |QQQ|4939|Invesco QQQ Trust, Series 1|n/a|n/a|
 
+#
+
 ### Best Securities by Sentiment Polarity (w/ 50+ Mentions)
 
 |Ticker|Sentiment|Company|Sector|Industry|
@@ -45,6 +49,8 @@
 |NTLA|0.0927|Intellia Therapeutics, Inc.|Health Care|Biotechnology: In Vitro & In Vivo Diagnostic Substances|
 |ONCS|0.0912|OncoSec Medical Incorporated|Health Care|Major Pharmaceuticals|
 
+#
+
 ### Worst Securities by Sentiment Polarity (w/ 50+ Mentions)
 
 |Ticker|Sentiment|Company|Sector|Industry|
@@ -54,6 +60,8 @@
 |LOCO|-0.0356|El Pollo Loco Holdings, Inc.|Consumer Services|Restaurants|
 |RETA|-0.0329|Reata Pharmaceuticals, Inc.|Health Care|Major Pharmaceuticals|
 |NEXT|-0.0319|NextDecade Corporation|Public Utilities|Oil & Gas Production|
+
+#
 
 ### Tickers based on Trading Volume/Mention Ratio
 |Ticker|Volume/Mention|Company|Average Volume|Mentions|
@@ -69,6 +77,8 @@
 |APM|53.5876|Aptorum Group Limited|214|4|
 |SP|55.1967|SP Plus Corporation|73246|1323|
 
+#
+
 ### Most Active Posters on /r/WallStreetBets (Excluding Bots)
 |Username|Total Comments|Average Sentiment|Most Mentioned Ticker|
 | ------------- |:-------:|:-----:|:-------------:|
@@ -77,6 +87,8 @@ avgazn247 | 14042 | 0.0247 | MU |
 SIThereAndThere | 7915 | 0.0151 | Z |
 brutalpancake | 6022 | 0.0288 | MU |
 Macabilly | 5554 | 0.0165 | AMD |
+
+#
 
 ### Best Tickers Based on Average Upvote Count
 
@@ -88,6 +100,8 @@ Macabilly | 5554 | 0.0165 | AMD |
 |POOL|33.0|Pool Corporation|Consumer Durables|Industrial Specialties|
 |LIND|31.0|Lindblad Expeditions Holdings Inc. |Consumer Services|Transportation Services|
 
+#
+
 ### Worst Tickers Based on Average Upvote Count
 
 |Ticker|Average Upvotes|Company|Sector|Industry|
@@ -97,6 +111,8 @@ Macabilly | 5554 | 0.0165 | AMD |
 |ABIL|-4.0|Ability Inc.|Consumer Durables|Telecommunications Equipment|
 |DOVA|-3.0|Dova Pharmaceuticals, Inc.|Health Care|Major Pharmaceuticals|
 |EEMA|-3.0|iShares MSCI Emerging Markets Asia ETF|n/a|n/a|
+
+#
 
 ### Most Popular Tickers Per Day
 
