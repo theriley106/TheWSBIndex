@@ -124,6 +124,10 @@ Average Daily Mentions (ADM):
 
 ### Stock Ticker Mentions by Average Vote Count
 
+## Strategies
+
+### Strategy #1
+
 ## Language Processing
 
 ### Overview
@@ -270,7 +274,9 @@ Wednesday, April 11, 2012 4:46:43 PM
 
 Prior to December 29th, sentiment analysis was done on comments without consideration of the sentiment of the ticker itself.  This overlook returned biased results in favor of companies with ticker names that doubled as valid words in the english dictionary.
 
-To fix this overlook, we modify the string prior to calculating sentiment so that all tickers are replaced with "TSLA" (a sentiment neutral ticker).
+To fix this overlook, I modified the string prior to calculating sentiment so that all tickers are replaced with "TSLA" (a sentiment neutral ticker).
+
+An example of the bias caused by this overlook can be seen in the original *Best Securities by Sentiment Polarity* table below (initially published in [commit 89ddf9d](https://github.com/theriley106/TheWSBIndex/commit/89ddf9dd93d96ba8a1722ecc8d05b026feec75b3).
 
 |Ticker|Sentiment|Company|Sector|Industry|
 | ------------- |:-------------:|:-----:|:-------------:|:-----:|
