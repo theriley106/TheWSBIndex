@@ -11,11 +11,11 @@
 
 ### General
 
-Total Comments: **2,979,131**
+**Total Comments: 2,979,131**
 
-Total Comments Mentioning Valid Securities: **281,550**
+**Total Comments Mentioning Valid Securities: 281,550**
 
-First Comment: **Wednesday, April 11, 2012 4:46:43 PM**
+**First Comment: Wednesday, April 11, 2012 4:46:43 PM**
 
 ### Top Securities by Total Comment Mentions
 
