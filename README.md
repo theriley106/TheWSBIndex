@@ -289,10 +289,6 @@ for sentence in comment:
 > **{"sell": [], "buy": [], "calls": [], "puts": ["GPRO"]}**
 
 
-## First Comment
-
-
-
 ## Notable Revisions
 
 ### December 29th 2018
