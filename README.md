@@ -142,12 +142,29 @@ Stock Mention Ranking (SMR): **3**
 
 Ticker First Mentioned on WSB: **2,105 Days Ago**
 
+
+
+
 <p align="center">
 <img src ="static/totalByDay_TSLA.png">
 </p>
 
 
 ### Strategy Returns
+
+#### Return Overview
+
+### Strategy Specific Returns for TSLA (Starting w/ $1,000,000)
+|Strategy Name|Total Trades|Return Percentage|Return|Alpha|
+| ------------- |:-------:|:-------:|:-------:|:-------:|
+|Buy And Hold|1|0|$3,131.02|0|
+|Strategy 1|197|0|$517,800.90|0|
+|Strategy 4|242|0|$283,592.14|0|
+|Strategy 5|56|0|$48,154.94|0|
+|Strategy 6|55|0|$154,132.37|0|
+|Strategy 7|75|0|-$151,645.97|0|
+
+#### Return by Strategy
 
 <b>Note: Trades based on WallStreetBets comments are in BLUE, trades based on holding long-term are in RED</b>
 
