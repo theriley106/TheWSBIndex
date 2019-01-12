@@ -7,7 +7,7 @@
 
 <h2 align=center><a href="https://www.kaggle.com/theriley106/wallstreetbetscomments">Download the Dataset Here</a></h2>
 
-## Overall Analysis
+# Overall Analysis
 
 <p style="font-size:14px;"">
   Total Comments: <b>2,979,131</b></p>
@@ -114,9 +114,9 @@ Macabilly | 5554 | 0.0165 | AMD |
 
 ### Most Popular Tickers Per Day
 
-## Security-Specific Analysis
+# Security-Specific Analysis
 
-### MU
+## MU
 
 Total Comments Mentioning Ticker:
 
@@ -128,19 +128,19 @@ Average Daily Mentions (ADM):
 
 #### Stock Performance vs. (Daily Mentions - Average Daily Mentions)
 
-### AMD
+## AMD
 
-## Tesla, Inc. Analysis (TSLA)
+# Tesla, Inc. Analysis (TSLA)
 
-Total Comments Mentioning Ticker: **12,079**
+### Total Comments Mentioning Ticker: **12,079**
 
-Average Sentiment Towards Ticker: **0.042**
+### Average Sentiment Towards Ticker: **0.042**
 
-Average Daily Mentions (ADM):
+### Average Daily Mentions (ADM):
 
-Stock Mention Ranking (SMR): **3**
+### Stock Mention Ranking (SMR): **3**
 
-Ticker First Mentioned on WSB: **2,105 Days Ago**
+### Ticker First Mentioned on WSB: **2,105 Days Ago**
 
 
 
@@ -150,11 +150,9 @@ Ticker First Mentioned on WSB: **2,105 Days Ago**
 </p>
 
 
-### Strategy Returns
+## Strategy Specific Returns for TSLA (Starting w/ $1,000,000)
 
-#### Return Overview
-
-### Strategy Specific Returns for TSLA (Starting w/ $1,000,000)
+### Overview
 |Strategy Name|Total Trades|Return Percentage|Return|Alpha|
 | ------------- |:-------:|:-------:|:-------:|:-------:|
 |Buy And Hold|1|0|$3,131.02|0|
@@ -164,7 +162,7 @@ Ticker First Mentioned on WSB: **2,105 Days Ago**
 |Strategy 6|55|0|$154,132.37|0|
 |Strategy 7|75|0|-$151,645.97|0|
 
-#### Return by Strategy
+### Return by Strategy
 
 <b>Note: Trades based on WallStreetBets comments are in BLUE, trades based on holding long-term are in RED</b>
 
