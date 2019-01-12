@@ -116,17 +116,21 @@ Macabilly | 5554 | 0.0165 | AMD |
 
 # Tesla, Inc. Analysis
 
-### Stock Ticker: **TSLA**
+<p style="font-size:14px;"">
+  Stock Ticker: <b>TSLA</b></p>
 
-### Total Comments Mentioning Ticker: **12,079**
+<p style="font-size:14px;"">
+  Total Comments Mentioning Ticker: <b>12,079</b></p>
 
-### Average Sentiment Towards Ticker: **0.042**
+<p style="font-size:14px;"">
+  Average Sentiment Towards Ticker: <b>0.042</b></p>
 
-### Average Daily Mentions (ADM):
+<p style="font-size:14px;"">
+  Stock Mention Ranking (SMR): <b>3</b></p>
 
-### Stock Mention Ranking (SMR): **3**
+  <p style="font-size:14px;"">
+  Ticker First Mentioned on WSB: <b>2,105 Days Ago</b></p>
 
-### Ticker First Mentioned on WSB: **2,105 Days Ago**
 
 
 <p align="center">
