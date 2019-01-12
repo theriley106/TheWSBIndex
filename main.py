@@ -11,6 +11,8 @@ import math
 from textblob import TextBlob
 import db
 
+TOTAL_DATES = -365
+
 COLUMNS = ['open', 'high', 'low', 'close']
 IS_TICKER = re.compile("[A-Z]{1,4}|\d{1,3}(?=\.)|\d{4,}")
 # This is a regex that determines if a string is a stock ticker
@@ -50,7 +52,8 @@ def get_average_volume_by_ticker(tickerVal):
 			your_list = list(reader)
 		total = 0
 		count = 0
-		for x in your_list[1:]:
+		your_list.pop(0)
+		for x in your_list[TOTAL_DATES:]:
 			try:
 				total += int(x[-1])
 				count += 1
@@ -91,7 +94,8 @@ def get_diff_from_ticker(tickerVal):
 		with open(HISTORICAL_DATA.format(tickerVal), 'rb') as f:
 			reader = csv.reader(f)
 			your_list = list(reader)
-		for x in your_list[1:]:
+		your_list.pop(0)
+		for x in your_list[TOTAL_DATES:]:
 			#print x
 			try:
 				info[x[0]] = float(x[4]) - float(x[1])
@@ -107,7 +111,8 @@ def get_percent_diff_from_ticker(tickerVal):
 		with open(HISTORICAL_DATA.format(tickerVal), 'rb') as f:
 			reader = csv.reader(f)
 			your_list = list(reader)
-		for x in your_list[1:]:
+		your_list.pop(0)
+		for x in your_list[TOTAL_DATES:]:
 			#print x
 			try:
 				info[x[0]] = ((float(x[4]) - float(x[1])) / float(x[1])) * 100
@@ -689,32 +694,99 @@ class Trade():
 		# Comment ratio by date
 		self.average_ratio = x['average']
 		# This is the average comment ratio
+		self.info_vals = []
+		self.totalTrades = 0
 
-	def short(self, date, amount):
-		return amount + (amount * ((-1*self.percent_diff[date])*.01))
+	def short(self, date, amount, duration=0):
+		#print("Shorting for {} days".format(duration))
+		if duration > 0:
+			open_amt = get_open_price_by_ticker(self.ticker, date)
+			indexVal = self.modified_dates.index(date)
+			if (indexVal + duration) >= len(self.modified_dates):
+				close_date = self.modified_dates[-1]
+			else:
+				close_date = self.modified_dates[indexVal + duration]
+			close_amt = get_close_price_by_ticker(self.ticker, close_date)
+		else:
+			open_amt = get_open_price_by_ticker(self.ticker, date)
+			close_amt = get_close_price_by_ticker(self.ticker, date)
+		#print("Start: {}".format(amount))
+		#print("End: {}".format(amount + (amount * (-1*((float(close_amt) - float(open_amt)) / float(open_amt))))))
+		increase = ((float(close_amt) - float(open_amt)) / float(open_amt))
+		#print("Stock increase: {}%".format(increase))
+		return amount + (amount * (-1*((float(close_amt) - float(open_amt)) / float(open_amt))))
 
-	def long(self, date, amount):
-		return amount + (amount * ((self.percent_diff[date])*.01))
+	def long(self, date, amount, duration=0):
+		#print("Long for {} days".format(duration))
+		if duration > 0:
+			#print("Duration")
+			open_amt = get_open_price_by_ticker(self.ticker, date)
+			indexVal = self.modified_dates.index(date)
+			if (indexVal + duration) >= len(self.modified_dates):
+				close_date = self.modified_dates[-1]
+			else:
+				close_date = self.modified_dates[indexVal + duration]
+			close_amt = get_close_price_by_ticker(self.ticker, close_date)
+		else:
+			open_amt = get_open_price_by_ticker(self.ticker, date)
+			close_amt = get_close_price_by_ticker(self.ticker, date)
+		return amount + (amount * ((float(close_amt) - float(open_amt)) / float(open_amt)))
+		#return amount + (amount * ((self.percent_diff[date])*.01))
 
 	def calc_buy_and_hold(self, balance):
 		a = get_open_price_by_ticker(self.ticker, self.modified_dates[0])
 		b = get_close_price_by_ticker(self.ticker, self.modified_dates[-1])
-		return balance * (float(b) / float(a))
+		return balance + (balance * ((float(b) / float(a)) / float(a)))
 
 	def test_strategy(self, function, balance):
+		goingLongBalance = balance
 		info = function(self)
 		dayDelay = info.get('delay', 0)
 		# Defaults to 0 delay
+		totalTrades = 0
+		self.info_vals = []
+		totalShares = goingLongBalance / float(get_open_price_by_ticker(self.ticker, self.modified_dates[dayDelay]))
 		for i in range(dayDelay, len(self.modified_dates)):
 			indicatorDay = self.modified_dates[i-dayDelay]
 			tradeDay = self.modified_dates[i]
 			tradeType = info['trades'][indicatorDay].get('trade')
 			if tradeType != None:
-				if tradeType == 'short':
-					balance = self.short(tradeDay, balance)
-				elif tradeType == 'long':
-					balance = self.long(tradeDay, balance)
+				if info['trades'][indicatorDay].get("completed", False) == False:
+					totalTrades += 1
+					if tradeType == 'short':
+						e = i
+						duration = 0
+						while e < len(self.modified_dates):
+							tempIndicatorDay = self.modified_dates[e-dayDelay]
+							tempTradeType = info['trades'][tempIndicatorDay].get('trade')
+							if tempTradeType == "long":
+								info['trades'][tempIndicatorDay]["completed"] = True
+								duration += 1
+							else:
+								break
+							e += 1
+						balance = self.short(tradeDay, balance, duration)
+					elif tradeType == 'long':
+						e = i
+						duration = 0
+						while e < len(self.modified_dates):
+							tempIndicatorDay = self.modified_dates[e-dayDelay]
+							tempTradeType = info['trades'][tempIndicatorDay].get('trade')
+							if tempTradeType == "long":
+								info['trades'][tempIndicatorDay]["completed"] = True
+								duration += 1
+							else:
+								break
+							e += 1
+						balance = self.long(tradeDay, balance, duration)
+			goingLongBalance = totalShares * float(get_close_price_by_ticker(self.ticker, self.modified_dates[i]))
+			self.info_vals.append({"date": self.modified_dates[i], "long_balance": goingLongBalance, "strategy_balance": balance})
+		print("Total Trades: {}".format(totalTrades))
+		self.totalTrades = totalTrades
 		return balance
+
+	def get_more_info(self):
+		return self.info_vals
 
 
 
