@@ -190,7 +190,7 @@ Macabilly | 5554 | 0.0165 | AMD |
 
 # Language Processing
 
-## Overview
+### Overview
 
 WallStreetBets is a discussion forum about day trading, stocks, options, futures, and anything market related, so it would be innacurate to assume that any comment containing a stock ticker indicated a long position on the security.
 
@@ -200,7 +200,7 @@ Unfortunately, this strategy would fail in comments discussing options, and in o
 
 Lastly, the discussion of multiple securities in a single comment can cause confusion as to the implied position relative to each stock ticker.
 
-## Proposed Solution
+### Proposed Solution
 
 Rather than using NLTK or RAKE, I created an algorithm present in *main.extract_buy_or_sell()* that attempts to extract the indicated position towards each stock ticker in a comment.  Here is the algorithm in Psuedocode:
 
@@ -267,7 +267,7 @@ for sentence in comment:
             comment_info['buy'] += tempList
 ```
 
-## Examples
+### Examples
 
 ##### Note: This algo is only being used for stocks traded on the Nasdaq, hence certain *valid* stock tickers are considered *invalid* as we are not actively pursing information on them.
 
