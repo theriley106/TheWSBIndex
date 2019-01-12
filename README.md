@@ -132,6 +132,32 @@ Average Daily Mentions (ADM):
 
 ### TSLA
 
+#### Strategy Returns
+
+<p align="center">
+<img src ="static/strat1_TSLA.png">
+</p>
+
+<p align="center">
+<img src ="static/strat3_TSLA.png">
+</p>
+
+<p align="center">
+<img src ="static/strat4_TSLA.png">
+</p>
+
+<p align="center">
+<img src ="static/strat5_TSLA.png">
+</p>
+
+<p align="center">
+<img src ="static/strat6_TSLA.png">
+</p>
+
+<p align="center">
+<img src ="static/strat7_TSLA.png">
+</p>
+
 ### AAPL
 
 ### NVDA
