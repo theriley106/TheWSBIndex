@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, url_for, redirect, Markup, js
 import json
 import calendar
 import main
+import algo
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -28,7 +29,17 @@ def totalByDay(ticker):
 		a = mentionsByDay[str(i)]
 		db.append({"Day": days[i], "Mentions": a})
 	#db = sorted(db, key=lambda k: k['Mentions'])[-20:]
-	return render_template("days.html", DATABASE=db, stock=ticker.upper(), )
+	return render_template("days.html", DATABASE=db, stock=ticker.upper())
+
+@app.route('/strat1/<ticker>', methods=['GET'])
+def testStrat1(ticker):
+	ticker = ticker.upper()
+	a = main.Trade(ticker)
+	startAmount = 1000000
+	buyAndHold = a.calc_buy_and_hold(startAmount)-startAmount
+	strat1 = a.test_strategy(algo.strategy1, startAmount)-startAmount
+	strat1Info = a.get_more_info()
+	return render_template("lines.html", DATABASE=strat1Info, strategy="Strategy 1", balance='{:,.2f}'.format(startAmount), stock=ticker.upper())
 
 if __name__ == '__main__':
 	app.run(host='127.0.0.1', port=5000)
