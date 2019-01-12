@@ -130,7 +130,9 @@ Average Daily Mentions (ADM):
 
 ## AMD
 
-# Tesla, Inc. Analysis (TSLA)
+# Tesla, Inc. Analysis
+
+### Stock Ticker: **TSLA**
 
 ### Total Comments Mentioning Ticker: **12,079**
 
