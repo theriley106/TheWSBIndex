@@ -332,7 +332,7 @@ for sentence in comment:
 
 ### December 29th 2018
 
-Prior to December 29th, sentiment analysis was done on comments without consideration for the sentiment of the ticker itself.  This overlook returned biased results in favor of companies with ticker names that doubled as valid words in the english dictionary.
+Prior to December 29th, sentiment analysis was done on comments without taking the sentiment of the ticker itself into consideration.  This overlook returned biased results in favor of companies with ticker names that doubled as valid words in the english dictionary.
 
 To fix this overlook, I modified the string prior to calculating sentiment so that all tickers are replaced with "TSLA" (a sentiment neutral ticker).
 
