@@ -132,13 +132,15 @@ Average Daily Mentions (ADM):
 
 ## Tesla, Inc. Analysis (TSLA)
 
-Total Comments Mentioning Ticker:
+Total Comments Mentioning Ticker: **12,079**
 
-Average Sentiment Towards Ticker:
+Average Sentiment Towards Ticker: **0.042**
 
 Average Daily Mentions (ADM):
 
-Stock Mention Ranking (SMR):
+Stock Mention Ranking (SMR): **3**
+
+Ticker First Mentioned on WSB: **2,105 Days Ago**
 
 <p align="center">
 <img src ="static/totalByDay_TSLA.png">
