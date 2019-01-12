@@ -130,13 +130,19 @@ Average Daily Mentions (ADM):
 
 ### AMD
 
-## TSLA Analysis
+## Tesla, Inc. Analysis (TSLA)
 
 Total Comments Mentioning Ticker:
 
 Average Sentiment Towards Ticker:
 
 Average Daily Mentions (ADM):
+
+Stock Mention Ranking (SMR):
+
+<p align="center">
+<img src ="static/totalByDay_TSLA.png">
+</p>
 
 
 ### Strategy Returns
