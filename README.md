@@ -172,6 +172,8 @@ Macabilly | 5554 | 0.0165 | AMD |
 <img src ="static/strat7_TSLA.png">
 </p>
 
+#
+
 # Data Visualizations
 
 ### Top-20 Stock Tickers by Total Mentions
@@ -200,6 +202,7 @@ Macabilly | 5554 | 0.0165 | AMD |
 
 ### Strategy #7
 
+#
 
 # Language Processing
 
@@ -336,6 +339,7 @@ for sentence in comment:
 
 > **{"sell": [], "buy": [], "calls": [], "puts": ["GPRO"]}**
 
+#
 
 # Notable Revisions
 
