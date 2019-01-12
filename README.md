@@ -114,22 +114,6 @@ Macabilly | 5554 | 0.0165 | AMD |
 
 ### Most Popular Tickers Per Day
 
-# Security-Specific Analysis
-
-## MU
-
-Total Comments Mentioning Ticker:
-
-Average Sentiment Towards Ticker:
-
-Average Daily Mentions (ADM):
-
-#### Mentions Per Weekday
-
-#### Stock Performance vs. (Daily Mentions - Average Daily Mentions)
-
-## AMD
-
 # Tesla, Inc. Analysis
 
 ### Stock Ticker: **TSLA**
@@ -145,14 +129,12 @@ Average Daily Mentions (ADM):
 ### Ticker First Mentioned on WSB: **2,105 Days Ago**
 
 
-
-
 <p align="center">
 <img src ="static/totalByDay_TSLA.png">
 </p>
 
 
-## Strategy Specific Returns for TSLA (Starting w/ $1,000,000)
+## Tesla, Inc. Strategy Specific Returns (Starting w/ $1,000,000)
 
 ### Overview
 |Strategy Name|Total Trades|Return Percentage|Return|Alpha|
@@ -188,12 +170,7 @@ Average Daily Mentions (ADM):
 <img src ="static/strat7_TSLA.png">
 </p>
 
-### AAPL
-
-### NVDA
-
-
-## Data Visualizations
+# Data Visualizations
 
 ### Top-20 Stock Tickers by Total Mentions
 
@@ -209,9 +186,9 @@ Average Daily Mentions (ADM):
 
 ### Strategy #1
 
-## Language Processing
+# Language Processing
 
-### Overview
+## Overview
 
 WallStreetBets is a discussion forum about day trading, stocks, options, futures, and anything market related, so it would be innacurate to assume that any comment containing a stock ticker indicated a long position on the security.
 
@@ -221,7 +198,7 @@ Unfortunately, this strategy would fail in comments discussing options, and in o
 
 Lastly, the discussion of multiple securities in a single comment can cause confusion as to the implied position relative to each stock ticker.
 
-### Proposed Solution
+## Proposed Solution
 
 Rather than using NLTK or RAKE, I created an algorithm present in *main.extract_buy_or_sell()* that attempts to extract the indicated position towards each stock ticker in a comment.  Here is the algorithm in Psuedocode:
 
@@ -288,7 +265,7 @@ for sentence in comment:
             comment_info['buy'] += tempList
 ```
 
-### Examples
+## Examples
 
 ##### Note: This algo is only being used for stocks traded on the Nasdaq, hence certain *valid* stock tickers are considered *invalid* as we are not actively pursing information on them.
 
@@ -345,7 +322,7 @@ for sentence in comment:
 > **{"sell": [], "buy": [], "calls": [], "puts": ["GPRO"]}**
 
 
-## Notable Revisions
+# Notable Revisions
 
 ### December 29th 2018
 
