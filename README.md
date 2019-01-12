@@ -112,8 +112,6 @@ Macabilly | 5554 | 0.0165 | AMD |
 
 #
 
-### Most Popular Tickers Per Day
-
 # Tesla, Inc. Analysis
 
 <p style="font-size:14px;"">
