@@ -130,9 +130,16 @@ Average Daily Mentions (ADM):
 
 ### AMD
 
-### TSLA
+## TSLA Analysis
 
-#### Strategy Returns
+Total Comments Mentioning Ticker:
+
+Average Sentiment Towards Ticker:
+
+Average Daily Mentions (ADM):
+
+
+### Strategy Returns
 
 <b>Note: Trades based on WallStreetBets comments are in BLUE, trades based on holding long-term are in RED</b>
 
