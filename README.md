@@ -184,9 +184,22 @@ Macabilly | 5554 | 0.0165 | AMD |
 
 ### Stock Ticker Mentions by Average Vote Count
 
-## Strategies
+# Strategies
 
 ### Strategy #1
+
+
+### Strategy #4
+
+
+### Strategy #5
+
+
+### Strategy #6
+
+
+### Strategy #7
+
 
 # Language Processing
 
