@@ -81,6 +81,16 @@ def testStrat6(ticker):
 	strat1Info = a.get_more_info()
 	return render_template("lines.html", DATABASE=strat1Info, strategy="Strategy 6", balance='{:,.2f}'.format(startAmount), stock=ticker.upper())
 
+@app.route('/strat7/<ticker>', methods=['GET'])
+def testStrat7(ticker):
+	ticker = ticker.upper()
+	a = main.Trade(ticker)
+	startAmount = 1000000
+	buyAndHold = a.calc_buy_and_hold(startAmount)-startAmount
+	strat1 = a.test_strategy(algo.strategy7, startAmount)-startAmount
+	strat1Info = a.get_more_info()
+	return render_template("lines.html", DATABASE=strat1Info, strategy="Strategy 7", balance='{:,.2f}'.format(startAmount), stock=ticker.upper())
+
 
 if __name__ == '__main__':
 	app.run(host='127.0.0.1', port=5000)
