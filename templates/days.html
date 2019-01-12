@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>Stock Tickers by Total Mentions</title>
+    <title>{{stock}} by Total Mentions</title>
     <script src="{{ url_for('static',filename='js/Chart.bundle.js') }}"></script>
     <script src="{{ url_for('static',filename='js/utils.js') }}"></script>
     <style>
@@ -67,7 +67,7 @@ new Chart(document.getElementById("bar-chart-grouped"), {
 
       title: {
         display: true,
-        text: 'Stock Tickers by Total Mentions'
+        text: '{{stock}} by Total Mentions'
       }
     }
 });
