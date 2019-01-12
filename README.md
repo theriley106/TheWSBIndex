@@ -134,12 +134,10 @@ Average Daily Mentions (ADM):
 
 #### Strategy Returns
 
-<p align="center">
-<img src ="static/strat1_TSLA.png">
-</p>
+<b>Note: Trades based on WallStreetBets comments are in BLUE, trades based on holding long-term are in RED</b>
 
 <p align="center">
-<img src ="static/strat3_TSLA.png">
+<img src ="static/strat1_TSLA.png">
 </p>
 
 <p align="center">
