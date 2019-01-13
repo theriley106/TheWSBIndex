@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>Stock Tickers by Total Mentions</title>
+    <title>/r/Tesla Comments Per Day vs. Stock Price</title>
     <script src="{{ url_for('static',filename='js/Chart.bundle.js') }}"></script>
     <script src="{{ url_for('static',filename='js/utils.js') }}"></script>
     <style>
@@ -33,9 +33,9 @@ new Chart(document.getElementById("bar-chart-grouped"), {
             yAxisID: 'left-y-axis'
         }, {
             data: [{% for info in DATABASE %}"{{ info.sentiment }}",{% endfor %}],
-            label: '/r/Tesla Average Comment Sentiment',
-            backgroundColor: window.chartColors.black,
-            borderColor: window.chartColors.black,
+            label: '/r/Tesla Comments Per Day',
+            backgroundColor: "#000000",
+            borderColor: "#000000",
             fill: false,
             // This binds the dataset to the right y axis
             yAxisID: 'right-y-axis',
@@ -59,7 +59,7 @@ new Chart(document.getElementById("bar-chart-grouped"), {
                 position: 'right',
                 scaleLabel:{
                     display: true,
-                    labelString: '/r/Tesla Comment Average Sentiment',
+                    labelString: '/r/Tesla Comments Per Day',
                     fontColor: "#000000"
                 }
             }]
