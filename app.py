@@ -25,6 +25,11 @@ def viz2():
 	db = json.load(open("TESLA_DATA.json"))
 	return render_template("viz2.html", DATABASE=db)
 
+@app.route('/viz3', methods=['GET'])
+def viz3():
+	db = json.load(open("TESLA_DATA_COMMENTS.json"))
+	return render_template("viz2.html", DATABASE=db)
+
 @app.route('/totalByDay/<ticker>', methods=['GET'])
 def totalByDay(ticker):
 	days = list(calendar.day_abbr)
