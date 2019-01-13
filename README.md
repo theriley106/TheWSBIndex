@@ -197,41 +197,65 @@ Macabilly | 5554 | 0.0165 | AMD |
 <img src ="static/totalByDay_AMD.png">
 </p>
 
+# Facebook, Inc. Analysis
 
-## Advanced Micro Devices, Inc. Strategy Specific Returns (Starting w/ $1,000,000)
+<p style="font-size:14px;"">
+  Stock Ticker: <b>FB</b></p>
+
+<p style="font-size:14px;"">
+  Total Comments Mentioning Ticker: <b>10,827</b></p>
+
+<p style="font-size:14px;"">
+  Average Sentiment Towards Ticker: <b>0.0459</b></p>
+
+<p style="font-size:14px;"">
+  Stock Mention Ranking (SMR): <b>7</b></p>
+
+  <p style="font-size:14px;"">
+  Ticker First Mentioned on WSB: <b>2,468 Days Ago</b></p>
+
+
+
+<p align="center">
+<img src ="static/totalByDay_FB.png">
+</p>
+
+
+## Facebook, Inc. Strategy Specific Returns (Starting w/ $1,000,000)
 
 ### Overview
 
 |Strategy Name|Total Trades|Return Percentage|Return|Alpha|
 | ------------- |:-------:|:-------:|:-------:|:-------:|
-|Strategy 1|127|-14.21%|-$142,071.22|0|
-|Strategy 4|144|8.22%|$82,156.09|0|
-|Strategy 5|40|-22.34%|-$223,378.86|0|
-|Strategy 6|40|78.9%|$789,025.36|0|
-|Strategy 7|66|-7.94%|-$79,432.79|0|
+|Buy and Hold|1|0.57%|$5,671.91|0|
+|Strategy 1|242|-26.86%|-$268,566.70|0|
+|Strategy 4|276|-24.62%|-$-246,156.84|0|
+|Strategy 5|27|-9.8%|-$98,046.78|0|
+|Strategy 6|27|9.87%|$98,653.12|0|
+|Strategy 7|44|0.32%|$3,186.45|0|
 
 ### Return by Strategy
 
 <b>Note: Trades based on WallStreetBets comments are in BLUE, trades based on holding long-term are in RED</b>
 
 <p align="center">
-<img src ="static/strat1_AMD.png">
+<img src ="static/strat1_FB.png">
 </p>
 
 <p align="center">
-<img src ="static/strat4_AMD.png">
+<img src ="static/strat4_FB.png">
 </p>
 
 <p align="center">
-<img src ="static/strat5_AMD.png">
+<img src ="static/strat5_FB.png">
 </p>
 
 <p align="center">
-<img src ="static/strat6_AMD.png">
+<img src ="static/strat6_FB.png">
 </p>
 
 <p align="center">
-<img src ="static/strat7_AMD.png">
+<img src ="static/strat7_FB.png">
 </p>
 
 #
