@@ -174,6 +174,69 @@ Macabilly | 5554 | 0.0165 | AMD |
 
 #
 
+# Advanced Micro Devices, Inc. Analysis
+
+<p style="font-size:14px;"">
+  Stock Ticker: <b>AMD</b></p>
+
+<p style="font-size:14px;"">
+  Total Comments Mentioning Ticker: <b>32,526</b></p>
+
+<p style="font-size:14px;"">
+  Average Sentiment Towards Ticker: <b>0.041</b></p>
+
+<p style="font-size:14px;"">
+  Stock Mention Ranking (SMR): <b>2</b></p>
+
+  <p style="font-size:14px;"">
+  Ticker First Mentioned on WSB: <b>2,440 Days Ago</b></p>
+
+
+
+<p align="center">
+<img src ="static/totalByDay_AMD.png">
+</p>
+
+
+## Advanced Micro Devices, Inc. Strategy Specific Returns (Starting w/ $1,000,000)
+
+### Overview
+
+    |Strategy Name|Total Trades|Return Percentage|Return|Alpha|
+| ------------- |:-------:|:-------:|:-------:|:-------:|
+|Strategy 1|127|-14.21%|-$142,071.22|0|
+|Strategy 4|144|8.22%|$82,156.09|0|
+|Strategy 5|40|-22.34%|-$223,378.86|0|
+|Strategy 6|40|78.9%|$789,025.36|0|
+|Strategy 7|66|-7.94%|-$79,432.79|0|
+
+### Return by Strategy
+
+<b>Note: Trades based on WallStreetBets comments are in BLUE, trades based on holding long-term are in RED</b>
+
+<p align="center">
+<img src ="static/strat1_AMD.png">
+</p>
+
+<p align="center">
+<img src ="static/strat4_AMD.png">
+</p>
+
+<p align="center">
+<img src ="static/strat5_AMD.png">
+</p>
+
+<p align="center">
+<img src ="static/strat6_AMD.png">
+</p>
+
+<p align="center">
+<img src ="static/strat7_AMD.png">
+</p>
+
+#
+
+
 # Data Visualizations
 
 ### Top-20 Stock Tickers by Total Mentions
