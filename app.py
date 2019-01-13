@@ -20,6 +20,11 @@ def viz1():
 	db = sorted(db, key=lambda k: k['Mentions'])[-20:]
 	return render_template("viz1.html", DATABASE=db)
 
+@app.route('/viz2', methods=['GET'])
+def viz2():
+	db = json.load(open("TESLA_DATA.json"))
+	return render_template("viz2.html", DATABASE=db)
+
 @app.route('/totalByDay/<ticker>', methods=['GET'])
 def totalByDay(ticker):
 	days = list(calendar.day_abbr)
