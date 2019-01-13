@@ -1,0 +1,73 @@
+
+<!doctype html>
+<html>
+
+<head>
+    <title>Stock Tickers by Total Mentions</title>
+    <script src="{{ url_for('static',filename='js/Chart.bundle.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/utils.js') }}"></script>
+    <style>
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="bar-chart-grouped" width="700" height="350"></canvas>
+    <script>
+
+new Chart(document.getElementById("bar-chart-grouped"), {
+    type: 'line',
+    data: {
+        datasets: [{
+            data: [20, 50, 100, 75, 25, 0],
+            label: 'Tesla Stock Price',
+
+            backgroundColor: window.chartColors.red,
+            borderColor: window.chartColors.red,
+            fill: false,
+            // This binds the dataset to the left y axis
+            yAxisID: 'left-y-axis'
+        }, {
+            data: [0.1, 0.5, 1.0, 2.0, 1.5, 0],
+            label: '/r/Tesla Average Comment Sentiment',
+            backgroundColor: window.chartColors.blue,
+            borderColor: window.chartColors.blue,
+            fill: false,
+            // This binds the dataset to the right y axis
+            yAxisID: 'right-y-axis',
+        }],
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                id: 'left-y-axis',
+                type: 'linear',
+                position: 'left',
+                scaleLabel:{
+                    display: true,
+                    labelString: 'Tesla Stock Price',
+                    fontColor: "#ff0000"
+                }
+            }, {
+                id: 'right-y-axis',
+                type: 'linear',
+                position: 'right',
+                scaleLabel:{
+                    display: true,
+                    labelString: '/r/Tesla Average Sentiment',
+                    fontColor: "#0080ff"
+                }
+            }]
+        }
+    }
+});
+
+</script>
+</body>
+
+</html>

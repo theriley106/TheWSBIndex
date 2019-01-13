@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>Line Chart</title>
+    <title>{{strategy}} Results for {{stock}} Starting with a ${{balance}} Account Balance</title>
     <script src="{{ url_for('static',filename='js/Chart.bundle.js') }}"></script>
     <script src="{{ url_for('static',filename='js/utils.js') }}"></script>
     <style>
@@ -14,9 +14,8 @@
     }
     </style>
 </head>
-
 <body>
-    <div style="width:75%;">
+    <div style="width:100%;">
         <canvas id="canvas"></canvas>
     </div>
     <br>
@@ -27,29 +26,32 @@
             type: 'line',
             data: {
                 labels: [
-                	{% for info in DATA %}
-                	{{ info }},
+                	{% for info in DATABASE %}
+                	"{{ info.date|string }}",
                 	{% endfor %}
                 ],
                 datasets: [{
-                    label: "Comments Containing Stock Tickers (% of Total Comments)",
+                    label: "Buy and Hold",
+                    fontSize: 18,
                     backgroundColor: window.chartColors.red,
                     borderColor: window.chartColors.red,
                     data: [
                         {% for info in DATABASE %}
-							{ y: {{ info.Y1 }} },
+							{ y: {{ info.long_balance }} },
 
 							{% endfor %}
                     ],
                     fill: false,
                 }, {
-                    label: "DOW Jones Historical Change",
+                    label: "Trading based on {{strategy}}",
                     fill: false,
+
+                    fontSize: 18,
                     backgroundColor: window.chartColors.blue,
                     borderColor: window.chartColors.blue,
                     data: [
                         {% for info in DATABASE %}
-							{ y: {{ info.Y2 }} },
+							{ y: {{ info.strategy_balance }} },
 
 							{% endfor %}
                     ],
@@ -59,7 +61,8 @@
                 responsive: true,
                 title:{
                     display:true,
-                    text:'Adult Site Comments Containing Stock Tickers vs. DOW Jones Historical Change'
+                    fontSize: 22,
+                    text:'{{strategy}} Results for {{stock}} Starting with a ${{balance}} Account Balance'
                 },
                 tooltips: {
                     mode: 'index',
@@ -74,14 +77,16 @@
                         display: true,
                         scaleLabel: {
                             display: true,
-                            labelString: 'Each Numerical Value Represents 4 Market Days'
+                            labelString: ''
                         }
                     }],
                     yAxes: [{
                         display: true,
                         scaleLabel: {
                             display: true,
-                            labelString: '% Of Total Comments / Daily Change'
+
+                    		fontSize: 22,
+                            labelString: 'Account Balance'
                         }
                     }]
                 }
