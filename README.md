@@ -141,12 +141,12 @@ Macabilly | 5554 | 0.0165 | AMD |
 ### Overview
 |Strategy Name|Total Trades|Return Percentage|Return|Alpha|
 | ------------- |:-------:|:-------:|:-------:|:-------:|
-|Buy And Hold|1|0|$3,131.02|0|
-|Strategy 1|197|0|$517,800.90|0|
-|Strategy 4|242|0|$283,592.14|0|
-|Strategy 5|56|0|$48,154.94|0|
-|Strategy 6|55|0|$154,132.37|0|
-|Strategy 7|75|0|-$151,645.97|0|
+|Buy And Hold|1|3.13%|$3,131.02|0|
+|Strategy 1|197|51.78%|$517,800.90|0|
+|Strategy 4|242|28.36%|$283,592.14|0|
+|Strategy 5|56|4.82%|$48,154.94|0|
+|Strategy 6|55|15.41%|$154,132.37|0|
+|Strategy 7|75|-15.16%|-$151,645.97|0|
 
 ### Return by Strategy
 
