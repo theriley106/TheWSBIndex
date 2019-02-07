@@ -174,29 +174,6 @@ Macabilly | 5554 | 0.0165 | AMD |
 
 #
 
-# Advanced Micro Devices, Inc. Analysis
-
-<p style="font-size:14px;"">
-  Stock Ticker: <b>AMD</b></p>
-
-<p style="font-size:14px;"">
-  Total Comments Mentioning Ticker: <b>32,526</b></p>
-
-<p style="font-size:14px;"">
-  Average Sentiment Towards Ticker: <b>0.041</b></p>
-
-<p style="font-size:14px;"">
-  Stock Mention Ranking (SMR): <b>2</b></p>
-
-  <p style="font-size:14px;"">
-  Ticker First Mentioned on WSB: <b>2,440 Days Ago</b></p>
-
-
-
-<p align="center">
-<img src ="static/totalByDay_AMD.png">
-</p>
-
 # Facebook, Inc. Analysis
 
 <p style="font-size:14px;"">
@@ -275,7 +252,24 @@ Macabilly | 5554 | 0.0165 | AMD |
 
 # Strategies
 
+### Notation
+
+| Abbreviation    | Meaning          |Formula          |
+| ------------- |:-------------:|:-------------:|
+| T    | Stock Ticker | |
+| OP     | Opening Price | |
+| CP     | Closing Price | |
+| DP     | Price Delta|  abs(CP-OP) |
+| PP     | % Variation | ((CP-OP) / OP) * 100 |
+| V     | Volume | |
+| TC     | Total Comments Mentioning T | |
+| S    | Sentiment Towards T | |
+| TR    | Ticker Rank (By Mentions) | |
+| AC     | Total Comments | |
+
 ### Strategy #1
+
+
 
 
 ### Strategy #4
