@@ -16,7 +16,7 @@
     <div class="row align-items-center h-100">
         <div class="col-6 mx-auto">
             <div class="jumbotron text-center">
-                <h1 class="display-4">{{ BALANCE }}</h1>
+                <h1 id="balance" class="display-4">AYYO</h1>
                 <p class="lead">This is a simple centered hero unit.</p>
                 <p class="lead">
                     <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
@@ -25,6 +25,17 @@
         </div>
     </div>
 </div>
-
+<script type="text/javascript">
+       var ws = new WebSocket("ws://localhost:8000/echo");
+       ws.onopen = function() {
+           ws.send("socket open");
+       };
+       ws.onclose = function(evt) {
+           alert("socket closed");
+       };
+       ws.onmessage = function(evt) {
+            document.getElementById("balance").innerHTML = evt.data;
+       };
+    </script>
   </body>
 </html>

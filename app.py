@@ -3,8 +3,20 @@ import json
 import calendar
 import main
 import algo
+import datetime
+import time
+from flask_sockets import Sockets
+
 
 app = Flask(__name__, static_url_path='/static')
+sockets = Sockets(app)
+
+@sockets.route('/echo')
+def echo_socket(ws):
+    while True:
+    	#message = ws.receive()
+        ws.send(str(datetime.datetime.now()))
+        time.sleep(.02)
 
 
 @app.route('/', methods=['GET'])
