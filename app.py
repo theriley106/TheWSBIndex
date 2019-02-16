@@ -6,17 +6,24 @@ import algo
 import datetime
 import time
 from flask_sockets import Sockets
+import random
 
 
 app = Flask(__name__, static_url_path='/static')
 sockets = Sockets(app)
 
+balance = [100000]
+
 @sockets.route('/echo')
 def echo_socket(ws):
     while True:
     	#message = ws.receive()
-        ws.send(str(datetime.datetime.now()))
-        time.sleep(.02)
+        ws.send(str(balance[-1]))
+        num = random.randint(1, 10000)
+        if random.randint(1,2) == 2:
+        	num *= -1
+        balance.append(balance[-1] + num)
+        time.sleep(.1)
 
 
 @app.route('/', methods=['GET'])
