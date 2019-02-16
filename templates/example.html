@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  </head>
+  <p id="test">Testing</p>
+  <script type="text/javascript">
+       var ws = new WebSocket("ws://localhost:8000/echo");
+       ws.onopen = function() {
+           ws.send("socket open");
+       };
+       ws.onclose = function(evt) {
+           alert("socket closed");
+       };
+       ws.onmessage = function(evt) {
+            document.getElementById("test").innerHTML = evt.data;
+       };
+    </script>
+</html>
