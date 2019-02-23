@@ -4,3 +4,4 @@ Flask-Cors==3.0.7
 dateparser==0.7.0
 Flask-SocketIO==3.0.0
 Flask-Sockets==0.2.1
+textblob==0.15.0
