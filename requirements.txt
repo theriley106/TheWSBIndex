@@ -2,3 +2,5 @@ Flask==0.12.3
 gunicorn==19.7.1
 Flask-Cors==3.0.7
 dateparser==0.7.0
+Flask-SocketIO==3.0.0
+Flask-Sockets==0.2.1
