@@ -9,6 +9,7 @@ from flask_sockets import Sockets
 import random
 
 
+
 app = Flask(__name__, static_url_path='/static')
 sockets = Sockets(app)
 
