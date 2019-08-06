@@ -267,22 +267,6 @@ Macabilly | 5554 | 0.0165 | AMD |
 | TR    | Ticker Rank (By Mentions) | |
 | AC     | Total Comments | |
 
-### Strategy #1
-
-
-
-
-### Strategy #4
-
-
-### Strategy #5
-
-
-### Strategy #6
-
-
-### Strategy #7
-
 #
 
 # Language Processing
